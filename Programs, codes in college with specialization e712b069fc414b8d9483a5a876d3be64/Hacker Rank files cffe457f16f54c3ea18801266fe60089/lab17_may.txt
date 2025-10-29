@@ -1,0 +1,141 @@
+https://www.hackerrank.com/contests/h-cs1c-17may/challenges
+https://www.javatpoint.com/k-means-clustering-algorithm-in-machine-learning#:~:text=Step%2D1%3A%20Select%20the%20number,form%20the%20predefined%20K%20clusters.
+Flatland is a country with a number of cities, some of which have space stations. Cities are numbered consecutively and each has a road of  length connecting it to the next city. It is not a circular route, so the first city doesn't connect with the last city. Determine the maximum distance from any city to its nearest space station.
+c++:
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int n , m , maxi = 0;
+    cin>> n >> m;
+    vector<int> station(m);
+    for(int i=0 ; i<m ; i++) cin >> station[i];
+    sort(station.begin(), station.end());
+    for(int i=0 ; i<=station[0] ; i++) maxi = max(maxi, station[0]-i);
+    for(int i=0 ; i<m-1 ; i++){
+        for(int j = station[i] ; j<=station[i+1] ; j++) {
+            maxi = max(maxi, min(j-station[i], station[i+1]-j));
+        }
+    }
+    for(int i=station[m-1] ; i<n ; i++) maxi = max(maxi, i-station[m-1]);
+    cout << maxi << endl;
+    return 0;
+}
+python:
+import sys
+
+def flatlandSpaceStations(n, stations):
+    stations = sorted(stations)
+    res = stations[0]
+    
+    for ind in range(1, len(stations)):
+        res = max(res, (stations[ind] - stations[ind-1])//2)
+        
+    res = max(res, n-1 - stations[-1])
+        
+    return res
+        
+    
+java:
+if __name__ == "__main__":
+    n, m = input().strip().split(' ')
+    n, m = [int(n), int(m)]
+    c = list(map(int, input().strip().split(' ')))
+    result = flatlandSpaceStations(n, c)
+    print(result)
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int M = in.nextInt();
+        int[] list = new int[M];
+        for(int i = 0; i < M; i++) {
+            list[i] = in.nextInt();
+        }
+        Arrays.sort(list);
+        
+        int first = Math.abs(0 - list[0]);
+        int last = Math.abs((N - 1) - list[M-1]);
+        int max = Math.max(first, last);
+        int maxSpace = 0;
+        for(int i = 0; i < M - 1; i++) {
+            maxSpace = Math.max(Math.abs(list[i] - list[i+1]), maxSpace);
+        }
+        max = Math.max(max, maxSpace / 2);
+        System.out.println(max);
+    }
+}
+ques2.Sam's house has an apple tree and an orange tree that yield an abundance of fruit. Using the information given below, determine the number of apples and oranges that land on Sam's house.
+c++
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int s, t, a, b, n, m, d, ans1=0, ans2=0;
+    cin >> s >> t >> a >> b >> m >> n;
+
+    for(int i=0;i<m; i++) {
+        cin>>d;
+        d = a+d;
+        if(d>=s && d<=t)
+            ans1++;
+    }
+    for(int i=0;i<n; i++) {
+        cin>>d;
+        d = b+d;
+        if(d>=s && d<=t)
+            ans2++;
+    }
+    cout << ans1 << endl;
+    cout << ans2 << endl; 
+    return 0;
+}
+python:
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the countApplesAndOranges function below.
+def countApplesAndOranges(s, t, a, b, apples, oranges):
+    count_Apples = 0
+    count_Oranges= 0
+
+    for i in range(len(apples)):
+        if a+apples[i] >= s and a+apples[i] <= t:
+            count_Apples +=1
+    for i in range(len(oranges)):
+        if b+oranges[i] >= s and b+oranges[i] <=t:
+            count_Oranges +=1
+    print(count_Apples)
+    print(count_Oranges)
+
+if __name__ == '__main__':
+    st = input().split()
+    s = int(st[0])
+    t = int(st[1])
+    ab = input().split()
+    a = int(ab[0])
+    b = int(ab[1])
+    mn = input().split()
+    m = int(mn[0])
+    n = int(mn[1])
+    apples = list(map(int, input().rstrip().split()))
+    oranges = list(map(int, input().rstrip().split()))
+    countApplesAndOranges(s, t, a, b, apples, oranges)
