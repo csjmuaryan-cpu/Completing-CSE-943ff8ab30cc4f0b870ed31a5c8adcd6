@@ -1,0 +1,8 @@
+class DemoCMD {
+public static void main(String[] a1){
+for(int i=0;i<a1.length;i++)
+{
+System.out.println(a1[i]);
+}
+}
+}

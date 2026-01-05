@@ -1,0 +1,258 @@
+<!-- Write a JavaScript function that validates a form field to ensure it contains only numeric characters.
+
+Write a JavaScript function that validates whether the value entered in the "ConfirmPassword" field matches the value entered in the "Password" field.
+
+Write a JavaScript function that validates whether at least one checkbox is checked. 
+Write a JavaScript function that validates whether a value is selected from a dropdown menu.
+
+Write a JavaScript function that validates whether a radio button is selected -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form Validations</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="password"], select {
+            width: 250px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error-message { color: red; font-size: 0.9em; margin-top: 3px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        fieldset { border: 1px solid #ddd; padding: 10px; margin-bottom: 15px; }
+        legend { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Form Validation Examples</h1>
+
+    <form id="myForm">
+        <!-- 1. Numeric Field Validation -->
+        <div class="form-group">
+            <label for="numericField">Numeric Only Field:</label>
+            <input type="text" id="numericField" name="numericField">
+            <div id="numericFieldError" class="error-message"></div>
+        </div>
+
+        <!-- 2. Confirm Password Validation -->
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <div id="confirmPasswordError" class="error-message"></div>
+        </div>
+
+        <!-- 3. Checkbox Validation (At least one checked) -->
+        <fieldset class="form-group">
+            <legend>Select your interests (at least one):</legend>
+            <input type="checkbox" id="interest1" name="interests" value="sports">
+            <label for="interest1">Sports</label><br>
+            <input type="checkbox" id="interest2" name="interests" value="music">
+            <label for="interest2">Music</label><br>
+            <input type="checkbox" id="interest3" name="interests" value="reading">
+            <label for="interest3">Reading</label><br>
+            <div id="checkboxError" class="error-message"></div>
+        </fieldset>
+
+        <!-- 4. Dropdown Menu Validation -->
+        <div class="form-group">
+            <label for="country">Select a Country:</label>
+            <select id="country" name="country">
+                <option value="">--Please choose an option--</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+            </select>
+            <div id="dropdownError" class="error-message"></div>
+        </div>
+
+        <!-- 5. Radio Button Validation -->
+        <fieldset class="form-group">
+            <legend>Choose your gender:</legend>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br>
+            <div id="radioError" class="error-message"></div>
+        </fieldset>
+
+        <button type="button" onclick="validateForm()">Validate Form</button>
+    </form>
+
+    <script>
+        // --- Validation Functions ---
+
+        /**
+         * 1. Validates if a field contains only numeric characters.
+         * @param {string} inputId - The ID of the input field.
+         * @param {string} errorId - The ID of the element to display the error message.
+         * @returns {boolean} - True if valid, false otherwise.
+         */
+        function validateNumericField(inputId, errorId) {
+            const inputElement = document.getElementById(inputId);
+            const errorElement = document.getElementById(errorId);
+            const value = inputElement.value.trim();
+            const numericRegex = /^[0-9]+$/; // Regex for one or more digits
+
+            if (value === "") {
+                errorElement.textContent = "This field is required.";
+                return false;
+            } else if (!numericRegex.test(value)) {
+                errorElement.textContent = "Please enter only numeric characters.";
+                return false;
+            } else {
+                errorElement.textContent = ""; // Clear error
+                return true;
+            }
+        }
+
+        /**
+         * 2. Validates if the "Confirm Password" field matches the "Password" field.
+         * @param {string} passwordId - The ID of the password field.
+         * @param {string} confirmPasswordId - The ID of the confirm password field.
+         * @param {string} errorId - The ID of the element to display the error message.
+         * @returns {boolean} - True if passwords match, false otherwise.
+         */
+        function validateConfirmPassword(passwordId, confirmPasswordId, errorId) {
+            const passwordElement = document.getElementById(passwordId);
+            const confirmPasswordElement = document.getElementById(confirmPasswordId);
+            const errorElement = document.getElementById(errorId);
+            const passwordValue = passwordElement.value;
+            const confirmPasswordValue = confirmPasswordElement.value;
+
+            if (confirmPasswordValue === "") {
+                errorElement.textContent = "Please confirm your password.";
+                return false;
+            } else if (passwordValue !== confirmPasswordValue) {
+                errorElement.textContent = "Passwords do not match.";
+                return false;
+            } else {
+                errorElement.textContent = ""; // Clear error
+                return true;
+            }
+        }
+
+        /**
+         * 3. Validates if at least one checkbox with a given name is checked.
+         * @param {string} checkboxName - The 'name' attribute of the checkboxes.
+         * @param {string} errorId - The ID of the element to display the error message.
+         * @returns {boolean} - True if at least one is checked, false otherwise.
+         */
+        function validateCheckboxes(checkboxName, errorId) {
+            const checkboxes = document.getElementsByName(checkboxName);
+            const errorElement = document.getElementById(errorId);
+            let isChecked = false;
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+
+            if (!isChecked) {
+                errorElement.textContent = "Please select at least one option.";
+                return false;
+            } else {
+                errorElement.textContent = ""; // Clear error
+                return true;
+            }
+        }
+
+        /**
+         * 4. Validates if a value is selected from a dropdown menu (not the default empty value).
+         * @param {string} selectId - The ID of the select (dropdown) element.
+         * @param {string} errorId - The ID of the element to display the error message.
+         * @returns {boolean} - True if a valid option is selected, false otherwise.
+         */
+        function validateDropdown(selectId, errorId) {
+            const selectElement = document.getElementById(selectId);
+            const errorElement = document.getElementById(errorId);
+            const selectedValue = selectElement.value;
+
+            if (selectedValue === "") { // Assuming the default option has an empty value
+                errorElement.textContent = "Please select an option from the dropdown.";
+                return false;
+            } else {
+                errorElement.textContent = ""; // Clear error
+                return true;
+            }
+        }
+
+        /**
+         * 5. Validates if a radio button from a group is selected.
+         * @param {string} radioName - The 'name' attribute of the radio buttons.
+         * @param {string} errorId - The ID of the element to display the error message.
+         * @returns {boolean} - True if a radio button is selected, false otherwise.
+         */
+        function validateRadioButtons(radioName, errorId) {
+            const radioButtons = document.getElementsByName(radioName);
+            const errorElement = document.getElementById(errorId);
+            let isSelected = false;
+
+            for (let i = 0; i < radioButtons.length; i++) {
+                if (radioButtons[i].checked) {
+                    isSelected = true;
+                    break;
+                }
+            }
+
+            if (!isSelected) {
+                errorElement.textContent = "Please select an option.";
+                return false;
+            } else {
+                errorElement.textContent = ""; // Clear error
+                return true;
+            }
+        }
+
+
+        // --- Main Form Validation Function ---
+        function validateForm() {
+            // Clear all previous error messages
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(el => el.textContent = '');
+
+            let isFormValid = true;
+
+            // Validate each field
+            if (!validateNumericField('numericField', 'numericFieldError')) {
+                isFormValid = false;
+            }
+            if (!validateConfirmPassword('password', 'confirmPassword', 'confirmPasswordError')) {
+                isFormValid = false;
+            }
+            if (!validateCheckboxes('interests', 'checkboxError')) {
+                isFormValid = false;
+            }
+            if (!validateDropdown('country', 'dropdownError')) {
+                isFormValid = false;
+            }
+            if (!validateRadioButtons('gender', 'radioError')) {
+                isFormValid = false;
+            }
+
+            if (isFormValid) {
+                alert("Form submitted successfully!");
+                // Here you would typically submit the form:
+                // document.getElementById('myForm').submit();
+            } else {
+                alert("Please correct the errors in the form.");
+            }
+        }
+    </script>
+
+</body>
+</html>

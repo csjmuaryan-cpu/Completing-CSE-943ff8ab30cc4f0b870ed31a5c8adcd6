@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Experiments Report</title>
+    <style>
+        /* Defines the overall look when viewing in a browser */
+        body {
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Styles the A4 page container */
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 1.5cm; /* Outer margin/border of the page */
+            margin: 1cm auto;
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* Needed for the watermark positioning */
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* The inner "sub-border" frame */
+        .content-frame {
+            border: 2px solid #888; /* The medium sub-border */
+            padding: 25px;
+            height: 100%;
+            box-sizing: border-box;
+            /* Font settings for all content inside the frame */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14pt;
+            line-height: 1.5;
+        }
+
+        /* The watermark style */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 5em; /* Larger font size for A4 */
+            font-weight: bold;
+            color: #000;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap; /* Prevents the watermark from wrapping */
+        }
+        
+        /* Ensures each experiment starts on a new page when printing */
+        @media print {
+            body {
+                background-color: #fff; /* White background for printing */
+            }
+            .a4-page {
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                page-break-after: always; /* Force a page break after each section */
+            }
+        }
+        
+        /* Styling for the Markdown content */
+        .content-frame h1, .content-frame h2, .content-frame h3 {
+            font-weight: bold;
+            color: #333;
+        }
+        .content-frame h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .content-frame strong {
+            font-weight: bold;
+        }
+        .content-frame code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 12pt;
+        }
+        .content-frame pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            white-space: pre-wrap; /* Allows long lines to wrap */
+            word-wrap: break-word;
+        }
+        .content-frame pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        .content-frame ul {
+            padding-left: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 1</h2>
+            <p><strong>Objective:</strong> Write a simple Java program using Eclipse IDE to display the message "Hello, Java World from Eclipse!" on the console, also use all major escape sequences including \n (newline), \t (tab), \\ (backslash), \" (double quote), \' (single quote), and \r (carriage return).</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>public class EscapeDemo {
+    public static void main(String[] args) {
+        // Basic message
+        System.out.println("Hello, Java World from Eclipse!");
+        
+        // Using newline (\\n)
+        System.out.println("\nThis is printed on a new line.");
+        
+        // Using tab (\\t) 
+        System.out.println("Name:\tJohn Doe"); 
+        System.out.println("Roll:\t118");
+        
+        // Using backslash (\\\\)
+        System.out.println("File path: C:\\Program Files\\Java\\jdk");
+        
+        // Using double quote (\\")
+        System.out.println("She said, \"Java is awesome!\"");
+        
+        // Using single quote (\\')
+        System.out.println("It's a good day to learn Java.");
+        
+        // Using carriage return (\\r) 
+        System.out.println("Learning Java is fun!\rStart: ");
+    }  
+}</code></pre>
+
+            <p><strong>Output:</strong></p>
+            <pre><code>Hello, Java World from Eclipse!
+
+This is printed on a new line.
+Name:   John Doe
+Roll:   118
+File path: C:\Program Files\Java\jdk
+She said, "Java is awesome!"
+It's a good day to learn Java.
+Start: Java is fun!</code></pre>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 2</h2>
+            <p><strong>Objective:</strong> Write a Java program that accepts two integer numbers as command-line arguments, calculates their sum, and displays the result.</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>public class CommandLineSum {
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.out.println("Please provide two integer numbers.");
+            return;
+        }
+        try {  
+            int num1 = Integer.parseInt(args[0]);  
+            int num2 = Integer.parseInt(args[1]);
+            int sum = num1 + num2;
+            System.out.println("Sum of " + num1 + " and " + num2 + " is: " + sum);  
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Please enter valid integer numbers.");
+        }
+    }
+}</code></pre>
+            <p><strong>Scenario 1: Command:</strong> <code>java CommandLineSum 10 25</code></p>
+            <p><strong>Output:</strong> <code>Sum of 10 and 25 is: 35</code></p>
+            
+            <p><strong>Scenario 2: Command:</strong> <code>java CommandLineSum 10</code></p>
+            <p><strong>Output:</strong> <code>Please provide two integer numbers.</code></p>
+            
+            <p><strong>Scenario 3: Command:</strong> <code>java CommandLineSum 5 five</code></p>
+            <p><strong>Output:</strong> <code>Error: Please enter valid integer numbers.</code></p>
+        </div>
+    </div>
+    
+    <!-- PAGE 3 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 3</h2>
+            <p><strong>Objective:</strong> Write a Java program to create two classes: Student and Rectangle, and demonstrate object creation and method invocation.</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>class Student { 
+    String name; int rollNo;
+    Student(String name, int rollNo) { this.name = name; this.rollNo = rollNo; }
+    void displayDetails() {
+        System.out.println("Student Name: " + name); 
+        System.out.println("Roll Number: " + rollNo);  
+    }  
+}
+
+class Rectangle { 
+    double length; double width;
+    Rectangle(double length, double width) { this.length = length; this.width = width; }  
+    void displayArea() {  
+        double area = length * width; 
+        System.out.println("Rectangle Area: " + area);  
+    }
+}
+
+public class Main {  
+    public static void main(String[] args) {  
+        Student student1 = new Student("Alice", 101); 
+        student1.displayDetails();
+        System.out.println();
+        Rectangle rectangle1 = new Rectangle(5.0, 3.0); 
+        rectangle1.displayArea();  
+    }  
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <pre><code>Student Name: Alice
+Roll Number: 101
+
+Rectangle Area: 15.0</code></pre>
+        </div>
+    </div>
+    
+    <!-- PAGE 4 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 4</h2>
+            <p><strong>Objective:</strong> Write a Java program to demonstrate inheritance and polymorphism (method overriding and overloading).</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>class Animal {  
+    void makeSound() { System.out.println("The animal makes a sound."); }
+}
+
+class Dog extends Animal { 
+    @Override
+    void makeSound() { System.out.println("The dog barks."); }
+    
+    void bark() { System.out.println("Dog is barking normally."); }
+    void bark(String type) { System.out.println("Dog is barking in a " + type + " way."); }  
+    void bark(int times) { System.out.println("Dog barked " + times + " times."); }  
+}
+
+public class InheritancePolymorphismDemo { 
+    public static void main(String[] args) {  
+        Animal myAnimal = new Animal(); 
+        Animal myDog = new Dog();
+        myAnimal.makeSound(); 
+        myDog.makeSound();
+        
+        Dog dog = new Dog(); 
+        dog.bark(); 
+        dog.bark("loud"); 
+        dog.bark(3);
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <pre><code>The animal makes a sound.
+The dog barks.
+Dog is barking normally.
+Dog is barking in a loud way.
+Dog barked 3 times.</code></pre>
+        </div>
+    </div>
+    
+    <!-- PAGE 5 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 5</h2>
+            <p><strong>Objective:</strong> Write a Java program to demonstrate exception handling and multithreading.</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>public class ExceptionAndThreadDemo {
+    public static void main(String[] args) {
+        System.out.println("--- Exception Handling Demo ---");
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero.");
+        } finally {
+            System.out.println("The 'finally' block is always executed.");
+        }
+        
+        System.out.println("\n--- Multithreading Demo ---");
+        Thread thread1 = new Thread(new MessagePrinter("Thread-1"));
+        Thread thread2 = new Thread(new MessagePrinter("Thread-2"));
+        thread1.start();
+        thread2.start();
+    }
+}
+class MessagePrinter implements Runnable {
+    private String threadName;
+    public MessagePrinter(String name) { this.threadName = name; }
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(threadName + " is running, message #" + i);
+            try { Thread.sleep(10); } catch (InterruptedException e) {}
+        }
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <pre><code>--- Exception Handling Demo ---
+Error: Cannot divide by zero.
+The 'finally' block is always executed.
+
+--- Multithreading Demo ---
+Thread-1 is running, message #1
+Thread-2 is running, message #1
+Thread-1 is running, message #2
+Thread-2 is running, message #2
+Thread-1 is running, message #3
+Thread-2 is running, message #3</code></pre>
+        </div>
+    </div>
+
+    <!-- PAGE 6 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 6</h2>
+            <p><strong>Objective:</strong> Write a Java program that creates and uses a user-defined package.</p>
+            
+            <p><strong>Directory Structure:</strong></p>
+            <pre><code>ProjectFolder/
+├── studentinfo/
+│   └── Student.java
+└── Main.java</code></pre>
+
+            <p><strong>File 1: <code>studentinfo/Student.java</code></strong></p>
+            <pre><code>package studentinfo;
+public class Student {
+    String name; int rollNo;
+    public Student(String name, int rollNo) { this.name = name; this.rollNo = rollNo; }
+    public void displayInfo() {
+        System.out.println("--- Student Information ---");
+        System.out.println("Name: " + this.name);
+        System.out.println("Roll Number: " + this.rollNo);
+    }
+}</code></pre>
+
+            <p><strong>File 2: <code>Main.java</code></strong></p>
+            <pre><code>import studentinfo.Student;
+public class Main {
+    public static void main(String[] args) {
+        Student student1 = new Student("Aryan Katiyar", 118);
+        student1.displayInfo();
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <pre><code>--- Student Information ---
+Name: Aryan Katiyar
+Roll Number: 118</code></pre>
+        </div>
+    </div>
+
+    <!-- PAGE 7 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 7</h2>
+            <p><strong>Objective:</strong> Write a Java program that uses Java I/O streams to read from and write to text files.</p>
+            
+            <p><strong>Program:</strong></p>
+            <pre><code>import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileIOExample {
+    public static void main(String[] args) {
+        try (FileWriter writer = new FileWriter("input.txt")) {
+            writer.write("Hello from input.txt!");
+        } catch (IOException e) { e.printStackTrace(); }
+
+        try (FileReader reader = new FileReader("input.txt");
+             FileWriter writer = new FileWriter("output.txt")) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                writer.write(character);
+            }
+        } catch (IOException e) { e.printStackTrace(); }
+        System.out.println("File copy complete.");
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <ul>
+                <li>A file <code>input.txt</code> is created with content.</li>
+                <li>A file <code>output.txt</code> is created with a copy of <code>input.txt</code>'s content.</li>
+                <li>Console prints: <code>File copy complete.</code></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- PAGE 8 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 8</h2>
+            <p><strong>Objective:</strong> Create a simple Spring application using annotation-based dependency injection.</p>
+            
+            <p><strong>File 1: <code>pom.xml</code></strong></p>
+            <pre><code><dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.23</version>
+</dependency></code></pre>
+
+            <p><strong>File 2: <code>MessageService.java</code></strong></p>
+            <pre><code>import org.springframework.stereotype.Component;
+@Component
+public class MessageService {
+    public String getMessage() { return "Message from injected service!"; }
+}</code></pre>
+
+            <p><strong>File 3: <code>App.java</code></strong></p>
+            <pre><code>import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.*;
+@Configuration @ComponentScan(".")
+public class App {
+    @Autowired private MessageService service;
+    public void displayMessage() { System.out.println(service.getMessage()); }
+    public static void main(String[] args) {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(App.class);
+        ctx.getBean(App.class).displayMessage();
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+            <pre><code>Message from injected service!</code></pre>
+        </div>
+    </div>
+
+    <!-- PAGE 9 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 9</h2>
+            <p><strong>Objective:</strong> Develop a RESTful web service using Spring Boot.</p>
+
+            <p><strong>File 1: <code>pom.xml</code></strong></p>
+            <pre><code><parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.5</version>
+</parent>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies></code></pre>
+            
+            <p><strong>File 2: <code>ApiController.java</code></strong></p>
+            <pre><code>import org.springframework.web.bind.annotation.*;
+import java.util.Map;
+@RestController
+public class ApiController {
+    @GetMapping("/api/greeting")
+    public Map<String, String> getGreeting() {
+        return Map.of("message", "Hello from Spring Boot REST API!");
+    }
+}</code></pre>
+            <p><strong>Input:</strong> Run the app and go to <code>http://localhost:8080/api/greeting</code>.</p>
+            <p><strong>Output (JSON):</strong></p>
+            <pre><code>{"message":"Hello from Spring Boot REST API!"}</code></pre>
+        </div>
+    </div>
+    
+    <!-- PAGE 10 -->
+    <div class="a4-page">
+        <div class="watermark">aryan katiyar 2301640100118</div>
+        <div class="content-frame">
+            <h2>Experiment: 10</h2>
+            <p><strong>Objective:</strong> Build a basic web application using Spring Boot and Thymeleaf.</p>
+            
+            <p><strong>File 1: <code>pom.xml</code></strong></p>
+            <pre><code><dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+</dependencies></code></pre>
+            
+            <p><strong>File 2: <code>WebController.java</code></strong></p>
+            <pre><code>import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+@Controller
+public class WebController {
+    @GetMapping("/") public String showForm() { return "index"; }
+    @PostMapping("/submit")
+    public String handleForm(@RequestParam String username, Model model) {
+        model.addAttribute("name", username);
+        return "result";
+    }
+}</code></pre>
+            <p><strong>Input:</strong> Run app, go to <code>http://localhost:8080/</code>, enter a name, and submit.</p>
+            <p><strong>Output:</strong> A page displaying "Hello, [Your Name]!".</p>
+        </div>
+    </div>
+
+</body>
+</html>

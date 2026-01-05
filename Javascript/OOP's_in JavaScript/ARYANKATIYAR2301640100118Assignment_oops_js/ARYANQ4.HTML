@@ -1,0 +1,99 @@
+<!-- Write a JavaScript program that demonstrates custom events by creating a custom event named "myEvent" and dispatching it on a button click. Add an event listener for "myEvent" that logs a message to the console whentriggered -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Event Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            font-style: italic;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Custom Event Demonstration</h1>
+    <button id="myButton">Trigger Custom Event</button>
+    <p id="statusMessage">Click the button to see the custom event in action (check console).</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const myButton = document.getElementById('myButton');
+    const statusMessage = document.getElementById('statusMessage');
+
+    // 1. Add an event listener for the custom event "myEvent"
+    // This listener will be attached to the document, but you can attach it
+    // to any element that you expect to dispatch the event or an ancestor
+    // if the event bubbles.
+    document.addEventListener('myEvent', function(event) {
+        // The 'event' object here is our custom event.
+        // 'event.detail' can carry custom data.
+        console.log('Custom event "myEvent" was triggered!');
+
+        let logMessage = 'Custom event "myEvent" caught on the document.';
+
+        if (event.detail && event.detail.message) {
+            console.log('Data received with event:', event.detail.message);
+            logMessage += ` Data: "${event.detail.message}"`;
+        }
+        if (event.detail && event.detail.timestamp) {
+            console.log('Timestamp:', event.detail.timestamp);
+        }
+
+        // Update the status message on the page
+        statusMessage.textContent = logMessage + ' (Check console for more details)';
+        statusMessage.style.color = 'green';
+    });
+
+
+    // 2. Add a click event listener to the button
+    myButton.addEventListener('click', function() {
+        console.log('Button clicked. Preparing to dispatch "myEvent".');
+        statusMessage.textContent = 'Button clicked, dispatching event...';
+        statusMessage.style.color = '#555';
+
+        // 3. Create a new CustomEvent
+        // The first argument is the name of the custom event.
+        // The second argument is an optional object for configuration.
+        // 'detail' is a property where you can pass custom data.
+        const myCustomEvent = new CustomEvent('myEvent', {
+            detail: {
+                message: 'Hello from the custom event!',
+                timestamp: new Date().toLocaleTimeString()
+            },
+            bubbles: true,cancelable: true
+        });
+
+        myButton.dispatchEvent(myCustomEvent);
+        console.log('"myEvent" has been dispatched from the button.');
+    });
+});
+    </script>
+</body>
+</html>

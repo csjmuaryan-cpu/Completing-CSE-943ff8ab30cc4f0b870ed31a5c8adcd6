@@ -1,0 +1,3 @@
+URL's
+1.https://www.w3schools.blog/android-tutorial#google_vignette
+2.https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio#2

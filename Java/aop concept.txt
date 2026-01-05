@@ -1,0 +1,56 @@
+AOP Concepts
+Weaving
+It is a process of linking aspects (advice) with other application types or objects to create an advised object.
+Advice can be applied.
+It can be done at:
+Compile Time
+Load Time
+Run Time
+Spring AOP performs weaving at Run Time.
+Pointcut
+Since it's not feasible to apply advice at every point of the code, the selected joint points where advice is finally applied are known as the Pointcut.
+POJO (Plain Old Java Object)
+A POJO is an object which encapsulates business logic.
+Characteristics:
+Should not extend pre-specified classes.
+Should not implement pre-specified interfaces.
+Should not contain pre-specified annotations.
+No restriction on constructor presence or arguments (may or may not have a no-argument constructor).
+Fields can have any visibility (public, private, protected, default).
+Used when you don't want to restrict access to members and want to give the user complete access to the entity.
+Bean
+A Bean is a special type of POJO intended to be a reusable component.
+Characteristics (making it different from a general POJO):
+Fields typically have only private visibility.
+Must have a no-argument constructor (either implicitly provided by Java or explicitly defined).
+Provides complete control; fields are accessed only by getter and setter methods.
+Relationship: Every Bean is a POJO, but not every POJO is a Bean.
+Used when you want to provide the user with your entity but restrict access to only certain parts or control access through getter/setter functionality.
+MVC Architecture (Model-View-Controller)
+A distributed system architecture pattern.
+Components:
+Model: Represents the data and business logic (often implemented using Beans/POJOs).
+View: Handles the presentation of the data to the user.
+Controller: Handles user input, interacts with the Model, and selects the appropriate View.
+Spring Framework is built entirely on the MVC pattern (Spring MVC).
+Singleton
+A design pattern that restricts the instantiation of a class to only one object.
+Spring Bean Scope - Singleton:
+The container creates exactly one instance of the object defined by that bean.
+This single instance is stored in a cache.
+All subsequent requests for that bean instance are referenced to the same single instance.
+Any modification made to the object will be reflected in all parts of the application accessing that bean instance.
+DAO Design Pattern (Data Access Object)
+It is a design pattern that creates an abstraction layer between the business logic and the data storage (like a database).
+
+Purpose:
+
+Prevents direct access to the data storage layer from the business logic.
+Provides flexibility; the underlying data storage mechanism can be changed without affecting the business logic.
+Enhances modularity and separation of concerns.
+Increases security by controlling how data is accessed.
+Business Logic vs. Programming Logic:
+
+Programming Logic: The technical tasks required to make things work (e.g., performing a transaction, connecting to a database). This is often standard across applications.
+Business Logic: Company-specific rules and strategies for how operations are conducted or how value is created/delivered (e.g., offering cashback, optimizing transaction speed, specific pricing rules). This is often highly sensitive and needs to be kept separate and secured.
+The DAO pattern helps separate Business Logic, Programming Logic, and Data Storage, promoting a more structured and maintainable application.

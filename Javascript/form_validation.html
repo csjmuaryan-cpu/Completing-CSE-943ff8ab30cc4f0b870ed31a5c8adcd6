@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylsheet" href="styles.css">
+    <script src="validation.js"></script>
+    <title>Document_Validation</title>
+</head>
+<script>
+    function getInformation(){
+        var val1=documant.forms[0].elements[3].value;
+        alert(val1);
+        var rollnum=document.getElementById("rn").value;
+        alert(rollnum);
+    }
+    function printError(empid,hintMsg){
+        document.getElementById(empid).innerHTML=hintMsg;
+    }
+    function validateForm(){
+        let Name=document.concatform.name.value
+        let Email=document.concatform.email.value
+        let mobile=document.concatform.mobile.value
+    }
+</script>
+<body>
+    <form name="contactform" onsubmit="return validationforms()">
+        Roll Number<input type="text" name="rollnum" id="rn"><br/>
+        First Name<input type="text" name="firstname" id="rn"><br/>
+        Last Name<input type="text" name="Lastname" id="rn"><br/>
+        Age<input type="text" name="age" id="rn"><br/>
+    </form>
+<hr>
+<form name="f2">
+    Emp Name<input type="text" name="Empnum" id="rn"><br/>
+    Emp ID<input type="text" name="EmpId" id="rn"><br/>
+    Salary<input type="text" name=Salary" id="rn"><br/>
+    Age<input type="text" name="age" id="rn"><br/>
+    <input type="submit" name="Employee Registration" onclick="getInformation()">
+</form>
+<form name="contactform" onsubmit="return validationforms()" action="confirmationform">
+    <h2>Application Form</h2>
+    <div class="row">
+        Emp Name<input type="text" name="Empnum" id="rn"><br/>
+        Emp ID<input type="text" name="EmpId" id="rn"><br/>
+        Salary<input type="text" name=Salary" id="rn"><br/>
+        Age<input type="text" name="age" id="rn"><br/>
+        <div class="error" id="emailErr"></div>
+    </div>
+    <div class="row">
+        <label>Country</label>
+        <select name="country">
+            <option>Select</option>
+            <option>Australia</option>
+            <option>India</option>
+            <option>UK</option>
+        </select>
+        <div class="error" id="countryErr"></div>
+    </div>
+    <div class="row">
+        <label>Gender</label>
+        <div class="form-inline">
+            <label><input type="radio" name="Female"></label>
+            <label><input type="radio" name="Female"></label>
+        </div>
+        </select>
+        <div class="error" id="countryErr"></div>
+    </div>
+    <div class="row">
+        <label>Country</label>
+        <select name="country">
+            <option>Select</option>
+            <option>Australia</option>
+            <option>India</option>
+            <option>UK</option>
+        </select>
+        <div class="error" id="countryErr"></div>
+    </div>
+    <input type="submit" name="Employee Registration" onclick="getInformation()">
+</form>
+</body>
+</html>

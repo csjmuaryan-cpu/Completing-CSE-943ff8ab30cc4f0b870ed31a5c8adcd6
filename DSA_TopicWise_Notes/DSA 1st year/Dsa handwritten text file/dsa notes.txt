@@ -1,0 +1,375 @@
+Learn Data Structures and Algorithms
+Data Structures and Algorithms (DSA) is a fundamental part of Computer Science that teaches you how to think and solve complex problems systematically.
+
+Using the right data structure and algorithm makes your program run faster, especially when working with lots of data.
+
+Knowing DSA can help you perform better in job interviews and land great jobs in tech companies.
+
+First, you will learn the fundamentals of DSA: understanding different data structures, basic algorithm concepts, and how they are used in programming.
+
+Then, you will learn more about complex data structures like trees and graphs, study advanced sorting and searching algorithms, explore concepts like time complexity, and more.
+
+This tutorial will give you a solid foundation in Data Structures and Algorithms, an essential skill for any software developer.
+
+Try it Yourself Examples in Every Chapter
+In every chapter, you can edit the examples online, and click on a button to view the result.
+
+The code examples in this tutorial are written in Python, C, and Java. You can see this by clicking the "Run Example" button.
+
+Example
+my_array = [7, 12, 9, 4, 11]
+minVal = my_array[0]
+
+for i in my_array:
+    if i < minVal:
+        minVal = i
+
+print('Lowest value:',minVal)
+What You Should Already Know
+Although Data Structures and Algorithms is actually not specific to any programming language, you should have a basic understanding of programming in one of these common programming languages:
+
+Python
+C
+C++
+Java
+JavaScript
+DSA History
+The word 'algorithm' comes from 'al-Khwarizmi', named after a Persian scholar who lived around year 800.
+
+The concept of algorithmic problem-solving can be traced back to ancient times, long before the invention of computers.
+
+The study of Data Structures and Algorithms really took off with the invention of computers in the 1940s, to efficiently manage and process data.
+
+Today, DSA is a key part of Computer Science education and professional programming, helping us to create faster and more powerful software.
+
+Term	Description
+Algorithm	A set of step-by-step instructions to solve a specific problem.
+Data Structure	A way of organizing data so it can be used efficiently. Common data structures include arrays, linked lists, and binary trees.
+Time Complexity	A measure of the amount of time an algorithm takes to run, depending on the amount of data the algorithm is working on.
+Space Complexity	A measure of the amount of memory an algorithm uses, depending on the amount of data the algorithm is working on.
+Big O Notation	A mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Used in this tutorial to describe the time complexity of an algorithm.
+Recursion	A programming technique where a function calls itself.
+Divide and Conquer	A method of solving complex problems by breaking them into smaller, more manageable sub-problems, solving the sub-problems, and combining the solutions. Recursion is often used when using this method in an algorithm.
+Brute Force	A simple and straight forward way an algorithm can work by simply trying all possible solutions and then choosing the best one.
+Where to Start?
+In this tutorial, you will first learn about a data structure with matching algorithms, before moving on to the next data structure.
+
+Further into the tutorial the concepts become more complex, and it is therefore a good idea to learn DSA by doing the tutorial step-by-step from the start.
+
+And as mentioned on the previous page, you should be comfortable in at least one of the most common programming languages, like for example JavaScript, C or Python, before doing this tutorial.
+
+On the next page we will look at two different algorithms that prints out the first 100 Fibonacci numbers using only primitive data structures (two integer variables). One algorithm uses a loop, and one algorithm uses something called recursion.
+How it works:
+
+Start with the two first Fibonacci numbers 0 and 1.
+Add the two previous numbers together to create a new Fibonacci number.
+Update the value of the two previous numbers.
+Do point a and b above 18 times.
+Loops vs Recursion
+To show the difference between loops and recursion, we will implement solutions to find Fibonacci numbers in three different ways:
+
+An implementation of the Fibonacci algorithm above using a for loop.
+An implementation of the Fibonacci algorithm above using recursion.
+Finding the 
+n
+th Fibonacci number using recursion.
+1. Implementation Using a For Loop
+It can be a good idea to list what the code must contain or do before programming it:
+
+Two variables to hold the previous two Fibonacci numbers
+A for loop that runs 18 times
+Create new Fibonacci numbers by adding the two previous ones
+Print the new Fibonacci number
+Update the variables that hold the previous two fibonacci numbers
+Using the list above, it is easier to write the program:
+
+Example
+prev2 = 0
+prev1 = 1
+
+print(prev2)
+print(prev1)
+for fibo in range(18):
+    newFibo = prev1 + prev2
+    print(newFibo)
+    prev2 = prev1
+    prev1 = newFibo
+2. Implementation Using Recursion
+Recursion is when a function calls itself.
+
+To implement the Fibonacci algorithm we need most of the same things as in the code example above, but we need to replace the for loop with recursion.
+
+To replace the for loop with recursion, we need to encapsulate much of the code in a function, and we need the function to call itself to create a new Fibonacci number as long as the produced number of Fibonacci numbers is below, or equal to, 19.
+
+Our code looks like this:
+
+Example
+print(0)
+print(1)
+count = 2
+
+def fibonacci(prev1, prev2):
+    global count
+    if count <= 19:
+        newFibo = prev1 + prev2
+        print(newFibo)
+        prev2 = prev1
+        prev1 = newFibo
+        count += 1
+        fibonacci(prev1, prev2)
+    else:
+        return
+
+fibonacci(1,0)
+3. Finding The 
+n
+th Fibonacci Number Using Recursion
+To find the 
+n
+th Fibonacci number we can write code based on the mathematic formula for Fibonacci number 
+n:F(n)=F(n−1)+F(n−2)
+
+This just means that for example the 10th Fibonacci number is the sum of the 9th and 8th Fibonacci numbers.
+Note: This formula uses a 0-based index. This means that to generate the 20th Fibonacci number, we must write 
+F(19).
+
+When using this concept with recursion, we can let the function call itself as long as 
+n is less than, or equal to, 1. If n≤1 it means that the code execution has reached one of the first two Fibonacci numbers 1 or 0.
+The code looks like this:
+Example
+def F(n):
+    if n <= 1:
+        return n
+    else:
+        return F(n - 1) + F(n - 2)
+print(F(19))
+Notice that this recursive method calls itself two times, not just one. This makes a huge difference in how the program will actually run on our computer. The number of calculations will explode when we increase the number of the Fibonacci number we want. To be more precise, the number of function calls will double every time we increase the Fibonacci number we want by one.
+Just take a look at the number of function calls for 
+F(5).
+The number of function calls with recursion
+To better understand the code, here is how the recursive function calls return values so that 
+F(5) returns the correct value in the end:
+
+The returns of the recursive function calls
+There are two important things to notice here: The amount of function calls, and the amount of times the function is called with the same arguments.
+
+So even though the code is fascinating and shows how recursion work, the actual code execution is too slow and ineffective to use for creating large Fibonacci numbers.
+
+Summary
+Before we continue, let's look at what we have seen so far:
+
+An algorithm can be implemented in different ways and in different programming languages.
+Recursion and loops are two different programming techniques that can be used to implement algorithms.
+It is time to move on to the first data structure we will look at, the array.
+Array-:an array is a data structure used to store multiple elements.
+2.arrays used by mny algorithms.
+Arrays are indexed, meaning that each element in the array has an index, a number that says where in the array the element is located. The programming languages in this tutorial (Python, Java, and C) use zero-based indexing for arrays, meaning that the first element in an array can be accessed at index 0.
+Algorithm: Find The Lowest Value in an Array
+Let's create our first algorithm using the array data structure.
+
+Below is the algorithm to find the lowest number in an array.
+
+How it works:
+
+Go through the values in the array one by one.
+Check if the current value is the lowest so far, and if it is, store it.
+After looking at all the values, the stored value will be the lowest of all values in the array.
+Implementation
+Before implementing the algorithm using an actual programming language, it is usually smart to first write the algorithm as a step-by-step procedure.
+
+If you can write down the algorithm in something between human language and programming language, the algorithm will be easier to implement later because we avoid drowning in all the details of the programming language syntax.
+
+Create a variable 'minVal' and set it equal to the first value of the array.
+Go through every element in the array.
+If the current element has a lower value than 'minVal', update 'minVal' to this value.
+After looking at all the elements in the array, the 'minVal' variable now contains the lowest value.
+You can also write the algorithm in a way that looks more like a programming language if you want to, like this:
+
+Variable 'minVal' = array[0]
+For each element in the array
+    If current element < minVal
+        minVal = current element
+
+Note: The two step-by-step descriptions of the algorithm we have written above can be called 'pseudocode'. Pseudocode is a description of what a program does, using language that is something between human language and a programming language.
+#include <stdio.h>
+
+int main() {
+    int my_array[] = {7, 12, 9, 4, 11};
+    int size = sizeof(my_array) / sizeof(my_array[0]);
+    int minVal = my_array[0];
+
+    for(int i = 0; i < size; i++) {
+        if(my_array[i] < minVal) {
+            minVal = my_array[i];
+        }
+    }
+
+    printf("Lowest value: %d\n", minVal);
+    return 0;
+}
+
+//C
+Bubble Sort
+Bubble Sort is an algorithm that sorts an array from the lowest value to the highest value.
+The word 'Bubble' comes from how this algorithm works, it makes the highest values 'bubble up'.
+
+How it works:
+
+Go through the array, one value at a time.
+For each value, compare the value with the next value.
+If the value is higher than the next one, swap the values so that the highest value comes last.
+Go through the array as many times as there are values in the array.
+
+Manual Run Through
+Before we implement the Bubble Sort algorithm in a programming language, let's manually run through a short array only one time, just to get the idea.
+
+Step 1: We start with an unsorted array.
+
+[7, 12, 9, 11, 3]
+Step 2: We look at the two first values. Does the lowest value come first? Yes, so we don't need to swap them.
+
+[7, 12, 9, 11, 3]
+Step 3: Take one step forward and look at values 12 and 9. Does the lowest value come first? No.
+
+[7, 12, 9, 11, 3]
+Step 4: So we need to swap them so that 9 comes first.
+
+[7, 9, 12, 11, 3]
+Step 5: Taking one step forward, looking at 12 and 11.
+
+[7, 9, 12, 11, 3]
+Step 6: We must swap so that 11 comes before 12.
+
+[7, 9, 11, 12, 3]
+Step 7: Looking at 12 and 3, do we need to swap them? Yes.
+
+[7, 9, 11, 12, 3]
+Step 8: Swapping 12 and 3 so that 3 comes first.
+
+[7, 9, 11, 3, 12]
+
+Manual Run Through: What Happened?
+We must understand what happened in this first run through to fully understand the algorithm, so that we can implement the algorithm in a programming language.
+
+Can you see what happened to the highest value 12? It has bubbled up to the end of the array, where it belongs. But the rest of the array remains unsorted.
+
+So the Bubble Sort algorithm must run through the array again, and again, and again, each time the next highest value bubbles up to its correct position. The sorting continues until the lowest value 3 is left at the start of the array. This means that we need to run through the array 4 times, to sort the array of 5 values.
+
+And each time the algorithm runs through the array, the remaining unsorted part of the array becomes shorter.
+
+Bubble Sort Implementation
+To implement the Bubble Sort algorithm in a programming language, we need:
+
+An array with values to sort.
+An inner loop that goes through the array and swaps values if the first value is higher than the next value. This loop must loop through one less value each time it runs.
+An outer loop that controls how many times the inner loop must run. For an array with n values, this outer loop must run n-1 times.
+
+#include <stdio.h>
+
+int main() {
+    int my_array[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    int n = sizeof(my_array) / sizeof(my_array[0]);
+
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (my_array[j] > my_array[j+1]) {
+                int temp = my_array[j];
+                my_array[j] = my_array[j+1];
+                my_array[j+1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", my_array[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+//C
+
+Bubble Sort Improvement
+The Bubble Sort algorithm can be improved a little bit more.
+
+Imagine that the array is almost sorted already, with the lowest numbers at the start, like this for example:
+
+my_array = [7, 3, 9, 12, 11]
+In this case, the array will be sorted after the first run, but the Bubble Sort algorithm will continue to run, without swapping elements, and that is not necessary.
+
+If the algorithm goes through the array one time without swapping any values, the array must be finished sorted, and we can stop the algorithm.
+
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int my_array[] = {7, 3, 9, 12, 11};
+    int n = sizeof(my_array) / sizeof(my_array[0]);
+
+    for (int i = 0; i < n-1; i++) {
+        bool swapped = false;
+        for (int j = 0; j < n-i-1; j++) {
+            if (my_array[j] > my_array[j+1]) {
+                int temp = my_array[j];
+                my_array[j] = my_array[j+1];
+                my_array[j+1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped) {
+            break;
+        }
+    }
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", my_array[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+//C
+
+Bubble Sort Time Complexity
+For a general explanation of what time complexity is, visit this page.
+
+For a more thorough and detailed explanation of Bubble Sort time complexity, visit this page.
+
+The Bubble Sort algorithm loops through every value in the array, comparing it to the value next to it. So for an array of 
+n
+ values, there must be 
+n
+ such comparisons in one loop.
+
+And after one loop, the array is looped through again and again 
+n
+ times.
+
+This means there are 
+n
+⋅
+n
+ comparisons done in total, so the time complexity for Bubble Sort is:
+
+O
+(
+n
+2
+)
+–––––––
+ 
+–––––––
+Selecton sort
+The selection sort algorithm finds the lowest value in the array and moves it to the front of the array.
+:the algorithm looks through the array again and again,moving the next lowest values to the front,until the array is sorted.
+HOW IT WORKS:
+1.go through the array to find the lowest value.
+2.move the lowest value to the front of the unsorted part of the array.
+3.go through the array again as many times as there are value in the array.
+
+
+

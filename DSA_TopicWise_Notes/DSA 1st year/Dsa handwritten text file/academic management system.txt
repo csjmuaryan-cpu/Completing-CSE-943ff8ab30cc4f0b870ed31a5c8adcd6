@@ -1,0 +1,64 @@
+
+Certainly! Below is a multi-file C program for searching different kinds of resources to support the teaching, learning, and research needs of students, faculty, and staff at academic institutions.
+
+File 1: search_main.c
+
+c
+Copy code
+#include <stdio.h>
+#include "search.h"
+
+int main() {
+    searchResource();
+    return 0;
+}
+File 2: search.h
+
+c
+Copy code
+#ifndef SEARCH_H
+#define SEARCH_H
+
+void searchResource();
+
+#endif // SEARCH_H
+File 3: search.c
+
+c
+Copy code
+#include <stdio.h>
+#include "search.h"
+
+void searchResource() {
+    int choice;
+    printf("Search for a resource:\n");
+    printf("1. Academic journals\n");
+    printf("2. Textbooks\n");
+    printf("3. Research papers\n");
+    printf("4. Databases\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            printf("Searching for academic journals...\n");
+            // Add functionality to search for academic journals here
+            break;
+        case 2:
+            printf("Searching for textbooks...\n");
+            // Add functionality to search for textbooks here
+            break;
+        case 3:
+            printf("Searching for research papers...\n");
+            // Add functionality to search for research papers here
+            break;
+        case 4:
+            printf("Searching databases...\n");
+            // Add functionality to search databases here
+            break;
+        default:
+            printf("Invalid choice.\n");
+            break;
+    }
+}
+This program structure provides a basic framework for searching different kinds of resources in an academic library. You can expand each case in the searchResource function to include specific functionalities for searching academic journals, textbooks, research papers, and databases according to the needs of the institution.

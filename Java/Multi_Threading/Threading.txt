@@ -1,0 +1,212 @@
+Okay, here are the polished notes based on the transcription:
+
+Class Notes: Multithreading Introduction
+Upcoming Topics
+IO Operations (Input/Output) - Will be covered next.
+Packages - How to create packages has been explained, but a formal definition for exam purposes still needs to be provided in writing.
+Introduction to Multithreading
+We have previously discussed the difference between:
+
+Multitasking: Doing multiple tasks simultaneously. It can be achieved in two ways: Multiprocessing and Multithreading.
+
+Multiprocessing (Process-Based Multitasking):
+
+The Operating System initiates multiple processes.
+The OS allocates dedicated resources (CPU time, CPU cycles, memory space) to each process.
+Communication between processes is called Inter-Process Communication (IPC).
+Multithreading (Thread-Based Multitasking):
+
+A single process initiates multiple threads within itself.
+The process divides its task into multiple parts and assigns each part to a separate thread.
+Threads within the same process share the same memory space allocated to that process.
+Each thread has its own stack to store its state.
+Communication between threads is called Inter-Thread Communication (ITC).
+Multitasking aims for better CPU utilization by allowing simultaneous execution of program parts.
+
+Diagram: Draw a diagram showing processes and threads. Indicate IPC between processes and ITC between threads. Label shared memory space and individual stacks. This is important for understanding and explaining the concepts, especially in exams.
+
+What is a Thread?
+A thread is a single sequential flow of control within a program.
+In languages like C, the execution is typically single-threaded (the main function represents this single flow). Method calls follow a strict sequence on a single call stack.
+Java allows for multiple threads to run concurrently.
+Characteristics of Threads
+Threads are lightweight processes.
+They share the same address space (memory) of the parent process.
+Each thread has its own stack to store its state.
+Multithreading helps maximize CPU utilization by keeping idle time to a minimum through simultaneous execution of program parts.
+The Java main Thread
+In Java, the main method runs within a thread, commonly referred to as the main thread.
+The JVM starts a thread (typically a non-Daemon thread) that calls the application's main method.
+The application's main thread is non-Daemon by default, meaning the JVM waits for it to finish before exiting. It can be explicitly set as a Daemon thread, but typically isn't.
+The main thread has a default priority of 5 (average priority, priority is on a scale of 1 to 10).
+The architectural difference between the JVM startup thread and the application main thread, and its connection to static, is an important concept for understanding Java's execution model and will be discussed further in the next lecture.
+Thread Program Output
+Thread programming can be tricky.
+The exact output of a multithreaded program can vary depending on CPU scheduling and cycles.
+The order in which threads execute (e.g., Thread 1 runs before Thread 2, or vice-versa) is not guaranteed.
+Because of this unpredictability, exact program output is rarely asked in interviews or exams.
+However, understanding the concept of threads and being able to predict potential outputs (understanding why the order might vary) is very important.
+Thread Life Cycle States
+A thread can be in one of the following states:
+
+New
+Runnable
+Blocked
+Waiting
+Timed Waiting
+Terminated
+(Details for each state will be shared separately, possibly with a diagram showing transitions.)
+
+Thread Class Methods Mentioned
+Methods influencing thread behavior and state include:
+
+start()
+run()
+wait()
+sleep()
+sleep(time)
+yield()
+stop() (Note: This method is deprecated)
+suspend() (Note: This method is deprecated)
+Reliable Sources
+Do not rely solely on sources like AI models (e.g., ChatGPT) as they compile information from various sources which may be inaccurate.
+Use verified sources for learning, especially the official Java API documentation (Oracle's documentation). It is the most authentic source for information on Java classes and how they work. You can access it locally, often through IDEs like Eclipse.
+Follow-up Topic
+Architectural difference between the JVM's startup thread and the application's main method/thread, and its connection to the static keyword. (To be discussed in the next lecture).
+
+Okay, here's the Python program with the test/driver code correctly placed outside the function definition, and the print statement corrected. This is the standard way to structure such a program for it to run as intended.
+
+#lex_auth_012693825794351104168
+
+def find_common_characters(msg1, msg2):
+    common_chars = ""
+    
+    # Remove blank spaces from msg1 and msg2
+    # We iterate through msg1_processed, so its original character order is preserved for common characters.
+    msg1_processed = msg1.replace(" ", "")
+    msg2_processed = msg2.replace(" ", "")
+    
+    # If either processed string is empty, there can be no common characters
+    if not msg1_processed or not msg2_processed:
+        return -1
+        
+    for char1 in msg1_processed:
+        # Check if the character from msg1 is in msg2
+        # And if it's not already added to our common_chars string (to avoid duplicates in the output)
+        if char1 in msg2_processed and char1 not in common_chars:
+            common_chars += char1
+            
+    if not common_chars: # If common_chars string is empty
+        return -1
+    else:
+        return common_chars
+        
+# Provide different values for msg1,msg2 and test your program
+msg1 = "I like Python"
+msg2 = "Java is a very popular language"
+common_characters = find_common_characters(msg1, msg2)
+print(common_characters)
+
+
+Execution Trace with the Sample Input:
+
+msg1 is "I like Python".
+
+msg2 is "Java is a very popular language".
+
+find_common_characters(msg1, msg2) is called.
+
+common_chars is initialized to "".
+
+msg1_processed becomes "IlikePython" (spaces removed).
+
+msg2_processed becomes "Javaisaverypopularlanguage" (spaces removed).
+
+Neither processed string is empty, so the if not msg1_processed or not msg2_processed: condition is false.
+
+The code iterates through char1 in msg1_processed ("IlikePython"):
+
+char1 = 'I': Not in msg2_processed.
+
+char1 = 'l': Is in msg2_processed ("language", "popular") AND not in common_chars (""). common_chars becomes "l".
+
+char1 = 'i': Is in msg2_processed ("is") AND not in common_chars ("l"). common_chars becomes "li".
+
+char1 = 'k': Not in msg2_processed.
+
+char1 = 'e': Is in msg2_processed ("very", "language") AND not in common_chars ("li"). common_chars becomes "lie".
+
+char1 = 'P': Not in msg2_processed (case-sensitive).
+
+char1 = 'y': Is in msg2_processed ("very") AND not in common_chars ("lie"). common_chars becomes "liey".
+
+char1 = 't': Not in msg2_processed.
+
+char1 = 'h': Not in msg2_processed.
+
+char1 = 'o': Is in msg2_processed ("popular") AND not in common_chars ("liey"). common_chars becomes "lieyo".
+
+char1 = 'n': Is in msg2_processed ("language") AND not in common_chars ("lieyo"). common_chars becomes "lieyon".
+
+The loop finishes.
+
+common_chars ("lieyon") is not empty.
+
+The function returns "lieyon".
+
+common_characters is assigned "lieyon".
+
+print(common_characters) is executed.
+
+Expected Output:
+
+lieyon
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+IGNORE_WHEN_COPYING_END
+
+Based on the meeting transcript, the following main topics have been discussed:
+
+Types of machine learning tasks: supervised, unsupervised, semi-supervised, and reinforcement learning
+Classification of supervised learning into regression and classification tasks
+Examples of different machine learning tasks and how to identify them
+Basic reduction functions in NumPy, including:
+np.sum()
+np.max()
+np.min()
+np.argmax()
+How to use these functions on 1D and 2D arrays
+Understanding axis parameter in NumPy functions for 2D arrays
+The discussion included explanations of these concepts and practical examples to illustrate their application.
+
+fsd night
+The meeting discussed several topics related to web development and React:
+
+Creating a React app using Vite
+Using Tailwind CSS for styling
+Implementing components from Shadcn UI library
+Creating and styling buttons, tables, and date pickers
+Working with flexbox and alignment in Tailwind CSS
+Using state variables in React
+Fetching data from APIs
+Using the useEffect hook in React
+Creating a simple e-commerce product listing page
+Implementing search and filter functionality
+The instructor also emphasized the importance of practice and encouraged students to follow along with the code examples provided.
+
+Based on the context provided, the following topics have been discussed in this meeting:
+
+Introduction to Pandas library
+Comparison between Numpy arrays and Pandas data structures
+Pandas Series: creation, indexing, and accessing elements
+Pandas DataFrame: creation from Numpy arrays and Python lists
+Labeling rows and columns in DataFrames
+Accessing data in DataFrames
+Attributes of DataFrames (shape, size, ndim)
+Solving LeetCode problems related to DataFrame creation and size calculation
+Brief introduction to metadata in the context of DataFrames
+Different ways to create DataFrames (from Numpy arrays, lists of lists, lists of tuples)
+The meeting ended with a mention that creating DataFrames from dictionaries would be discussed in the next class.
+

@@ -1,0 +1,82 @@
+17:40:12 From PARTH MISHRA to Everyone:
+	Good evening sir!
+	
+17:48:05 From Ishan Dwivedi to Everyone:
+	sir can we find inorder using preorder and postorder traversals and then use inorder and preorder to construct a binary tree
+	
+17:51:44 From selina to Everyone:
+	A is the root node as preorder has root as the first and postorder has root as the last element and leftmost element of root in preorder is the next leftmost root so, we can divide the postorder according to that leftmost element of root in preorder
+	
+17:58:45 From Saumya Singh to Everyone:
+	The leaf can be either left or right
+	
+18:01:22 From selina to Everyone:
+	sir if the no. of elements is two....the there will be  more possibilities of building tree .
+	
+18:02:12 From Ishan Dwivedi to Everyone:
+	Sir, we can consider that subarray has root element at start of preorder, and at the end of postorder. So, we can get the left child and right child of the subtree in the same way as we are finding the left child and right child of root node, i.e. , using recursion
+	
+18:08:57 From Ishan Dwivedi to Everyone:
+	Sir, here B is the root of subarray, so subarray of B has length 3. Again, C is the left child of subtree inside this and has length 1. So, we can say that C is the leaf node, and remaining elements are in the right subtree of B. 
+	
+	This determines that C is present in the left of B, and B is present at the left of A(if there is no element present between B and A in the postorder traversal), according to my understanding.
+	
+18:31:17 From Ishan Dwivedi to Everyone:
+	Yes sir
+	
+18:37:18 From selina to Everyone:
+	using bfs we can compare the size of queue with the 2^level no.(second last level) if they are equal we can return true
+	
+18:37:19 From Ishan Dwivedi to Everyone:
+	Sir can we get a level order traversal of binary tree. If there is any NULL present in this level order, then it is not complete binary tree. Otherwise it will be considered a complete binary tree according to my understanding.
+	
+18:39:15 From Ishan Dwivedi to Everyone:
+	If NULL is between any elements
+	
+18:39:44 From Vaishnavi Rathore to Everyone:
+	check at each level ( total no. of nodes at that level <= 2^h) if yes then true otherwise false.
+	
+18:39:50 From Saumya Singh to Everyone:
+	Traverse level by level using level order and check if its filled.    As for the last level while storing last level in queue that is in second last level if for any there is no right child and has left its not complete else complete
+	
+18:42:16 From Saumya Singh to Everyone:
+	Srry i mean no left child and right child is there then its incomplete
+	
+19:06:53 From Saumya Singh to Everyone:
+	Top down way ask if its subtree has no 1 remove it
+	
+19:07:41 From selina to Everyone:
+	we can start pruning from bottom of tree.... if leaf node->val ==0 the set that to nullptr
+	
+19:08:05 From Saumya Singh to Everyone:
+	Yes sir
+	
+19:08:19 From Ishan Dwivedi to Everyone:
+	Sir we can traverse this tree, If we find if value of root of any subtree is zero, then we can remove that subtree
+	
+19:15:27 From Ishan Dwivedi to Everyone:
+	ok sir
+	
+19:24:08 From selina to Everyone:
+	sir I have tried this problem using stack  I am facing problem in getting output...
+	
+19:26:16 From Ishan Dwivedi to Everyone:
+	ok sir
+	
+19:26:35 From PARTH MISHRA to Everyone:
+	brute force -- we can make vector of preorder then direct make the tree
+	
+19:27:06 From PARTH MISHRA to Everyone:
+	okay sir
+	
+discussed :
+Based on the context provided, the following topics have been discussed:
+
+Constructing binary trees from given traversals (pre-order and post-order)
+Complete binary trees - definition and verification
+Pruning binary trees (removing subtrees without any '1' nodes)
+Different approaches to solve tree problems: top-down, bottom-up, and traversal methods
+Efficiency analysis and optimization of tree algorithms
+Memoization as a technique to improve algorithm performance
+Brief mention of flattening a binary tree into a linked list (as a problem to solve before the next class)
+The discussion primarily focused on various binary tree operations and problem-solving strategies related to tree structures.

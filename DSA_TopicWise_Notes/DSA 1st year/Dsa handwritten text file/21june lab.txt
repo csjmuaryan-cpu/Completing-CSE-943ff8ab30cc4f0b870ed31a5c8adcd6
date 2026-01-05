@@ -1,0 +1,138 @@
+https://www.hackerrank.com/contests/h-cs1c-21june
+Given two integers,  and , find the maximal value of  xor , written , where  and  satisfy the following condition:
+
+Function Description
+
+Complete the maximizingXor function in the editor below. It must return an integer representing the maximum value calculated.
+
+maximizingXor has the following parameter(s):
+
+l: an integer, the lower bound, inclusive
+r: an integer, the upper bound, inclusive
+
+To solve the problem of finding the maximal value of \( a \oplus b \) (where \( \oplus \) denotes the bitwise XOR operation) given two integers \( l \) and \( r \) such that \( l \leq a < b \leq r \), we need to find two integers \( a \) and \( b \) within the specified range that maximize the XOR operation.
+
+The XOR operation has a property that makes it useful for this problem: for any two integers \( x \) and \( y \), \( x \oplus y \) is maximized when \( x \) and \( y \) differ as much as possible in their binary representation.
+
+To maximize \( a \oplus b \):
+1. Identify the most significant bit position where \( l \) and \( r \) differ. This is because XOR will be largest when the numbers differ in higher bits.
+2. Construct \( a \) and \( b \) such that they have opposite bits in this position.
+
+Here's the step-by-step approach:
+- Let \( p \) be the position of the highest bit where \( l \) and \( r \) differ.
+- Set \( a = l \).
+- Set \( b \) such that:
+  - \( b \) is formed by setting all bits from the most significant bit down to position \( p \) to 1 in \( l \).
+  - Check if \( b \leq r \). If not, set the bit at position \( p \) in \( b \) to 0 and continue setting bits downward until \( b \leq r \).
+
+Let's implement this in Python:
+
+```python
+def max_xor(l, r):
+    p = 0
+    while (1 << p) <= r:
+        p += 1
+    
+    # Now, p is the position of the highest bit where l and r differ
+    # Let's find the maximum XOR
+    a = l
+    b = l
+    for i in range(p):
+        if (b | (1 << i)) <= r:
+            b |= (1 << i)
+    
+    return a ^ b
+
+# Example usage:
+l = 10
+r = 15
+print(max_xor(l, r))  # Output: 7
+```
+
+In this implementation:
+- We first find \( p \), the highest bit position where \( l \) and \( r \) differ.
+- We initialize \( a \) to \( l \).
+- We construct \( b \) by setting bits from the most significant bit down to position \( p \) in \( l \) to 1, ensuring \( b \) is within the range \( l \leq b \leq r \).
+- Finally, we return \( a \oplus b \), which gives us the maximal XOR value for the given range \( [l, r] \).
+
+This approach efficiently finds the maximal XOR value using bitwise manipulation and respects the constraint \( l \leq a < b \leq r \).
+
+To solve the problem of finding the minimum distance between any pair of equal elements in an array, we can employ an efficient approach using a hashmap (or unordered_map in C++) to track the most recent index of each element as we iterate through the array.
+
+### Approach:
+
+1. **Use a Hashmap to Track Indices**:
+   - Traverse the array while maintaining a hashmap (`indexMap`) where keys are elements from the array and values are their most recent indices encountered.
+   - For each element:
+     - If it appears for the first time, record its index in `indexMap`.
+     - If it appears again, calculate the distance between the current index and the index stored in `indexMap`, and update the minimum distance found if this distance is smaller.
+     - Update the element's index in `indexMap` to the current index.
+
+2. **Initialization and Iteration**:
+   - Initialize a variable (`minDistance`) to track the minimum distance found. Start with a large value (e.g., infinity) to ensure any valid distance found will update it correctly.
+
+3. **Edge Cases**:
+   - If no pair of equal elements exists in the array, return `-1` (or any specific indicator like `inf`).
+
+### Implementation in C++:
+
+Here's the implementation based on the above approach:
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int minimumDistances(vector<int> a) {
+    unordered_map<int, int> indexMap; // Map to store last seen index of each element
+    int minDistance = INT_MAX; // Initialize to a large value
+    
+    for (int i = 0; i < a.size(); ++i) {
+        if (indexMap.find(a[i]) != indexMap.end()) {
+            int distance = i - indexMap[a[i]];
+            if (distance < minDistance) {
+                minDistance = distance;
+            }
+        }
+        indexMap[a[i]] = i; // Update the last seen index of the current element
+    }
+    
+    if (minDistance == INT_MAX) {
+        return -1; // If no valid pair found
+    }
+    
+    return minDistance;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    
+    int result = minimumDistances(a);
+    cout << result << endl;
+    
+    return 0;
+}
+```
+
+### Explanation:
+
+- **Input Reading**: The main function reads the size of the array \( n \) and then the array elements themselves.
+- **Function Call**: Calls `minimumDistances` function with the array `a` as input.
+- **Implementation of `minimumDistances`**:
+  - Initializes `indexMap` to track indices of elements.
+  - Iterates through the array:
+    - Checks if the current element has been seen before (exists in `indexMap`).
+    - Calculates the distance between the current index and the last seen index of the element.
+    - Updates `minDistance` if this distance is smaller than the current `minDistance`.
+    - Updates the `indexMap` with the current index of the element.
+  - Finally, returns `minDistance` if a valid pair is found, or `-1` if no such pair exists.
+
+This solution efficiently computes the minimum distance using \( O(n) \) time complexity due to the single pass through the array and constant-time operations with the hashmap for each element. This ensures it handles even larger arrays within reasonable time limits.

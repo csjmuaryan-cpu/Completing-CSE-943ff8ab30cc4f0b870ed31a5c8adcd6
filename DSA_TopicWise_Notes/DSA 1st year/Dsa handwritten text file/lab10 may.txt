@@ -1,0 +1,92 @@
+A person wants to determine the most expensive computer keyboard and USB drive that can be purchased with a give budget. Given price lists for keyboards and USB drives and a budget, find the cost to buy them. If it is not possible to buy both items, return-1.
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int ans=-1, a[1005], b[1005], i, n, m, s, j;
+
+int main()
+{
+
+    scanf("%d%d%d", &s, &n, &m);
+    for(i=1; i<=n; ++i) scanf("%d", &a[i]);
+    for(i=1; i<=m; ++i) scanf("%d", &b[i]);
+
+    for(i=1; i<=n; ++i)
+    for(j=1; j<=m; ++j)
+        if(a[i]+b[j]<=s) ans = max(a[i]+b[j], ans);
+
+    printf("%d\n", ans);
+
+    return 0;
+}
+Reduce a string of lowercase characters in range ascii[‘a’..’z’]by doing a series of operations. In each operation, select a pair of adjacent letters that match, and delete them.
+
+Delete as many characters as possible using this method and return the resulting string. If the final string is empty, return Empty String.
+char* superReducedString(char* s) {
+    int stringLength = strlen(s);
+    int currentIndex, nextIndex;
+    bool duplicate;
+    
+    do {
+        duplicate = false;
+        currentIndex = 0;
+        nextIndex = 1;
+        
+        while (nextIndex < stringLength) {
+            if (s[currentIndex] == s[nextIndex]) {
+                duplicate = true;
+                for (int k = nextIndex + 1; k <= stringLength; k++) {
+                    s[k - 2] = s[k];
+                }
+                stringLength -= 2;
+            } else {
+                currentIndex++;
+                nextIndex++;
+            }
+        }
+    } while (duplicate);
+
+    if (stringLength == 0)
+        return "Empty String";
+    else
+        return s;
+}
+or
+#include <iostream>
+#include <stack>
+using namespace std;
+
+string superReducedString(string s) {
+    stack<char> st;
+    for (char c : s) {
+        if (!st.empty() && st.top() == c) {
+            st.pop();
+        } else {
+            st.push(c);
+        }
+    }
+    
+    string result = "";
+    while (!st.empty()) {
+        result = st.top() + result;
+        st.pop();
+    }
+    
+    if (result.empty()) {
+        return "Empty String";
+    } else {
+        return result;
+    }
+}
+
+int main() {
+    string s;
+    cout << "Enter a string: ";
+    cin >> s;
+    cout << superReducedString(s) << endl;
+    return 0;
+}
+
+

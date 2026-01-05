@@ -1,0 +1,200 @@
+Exception Handling in Java - Notes
+
+------------------------------------------------------------
+Packages
+------------------------------------------------------------
+- Packages help organize Java code into namespaces.
+- You can create your own packages (e.g., for accounts, stock market modules).
+- To use classes from other packages, use the `import` statement.
+    Example: `import java.util.Scanner;`
+- Example of package declaration:
+        package demoexception;
+
+------------------------------------------------------------
+Creating a Package and Class (Example)
+------------------------------------------------------------
+1. Create a package: Name it `demoexception`.
+2. Create a class inside it: Name it `DemoEx1`.
+
+Example:
+package demoexception;
+
+public class DemoEx1 {
+        // class code here
+}
+
+------------------------------------------------------------
+Basic Try-Catch Example
+------------------------------------------------------------
+public class DemoEx1 {
+        public static void main(String[] args) {
+                m1(); 
+                m2();
+
+                int a = 10, b = 5, c;
+                c = a / b;
+                System.out.println("c = " + c);
+                System.out.println("finish");
+        }
+
+        public static void m1() {
+                System.out.println("From m1");
+        }
+
+        public static void m2() {
+                System.out.println("From m2");
+        }
+}
+
+Output (b=5):
+From m1
+From m2
+c = 2
+finish
+
+If b=0 (no exception handling), program terminates with ArithmeticException.
+
+------------------------------------------------------------
+Handling Exception with Try-Catch
+------------------------------------------------------------
+public class DemoEx1 {
+        public static void main(String[] args) {
+                m1(); 
+                m2();
+
+                try {
+                        int a = 10, b = 0, c;
+                        c = a / b;
+                        System.out.println("c = " + c);
+                } catch (Exception e) {
+                        System.out.println("catch block executed");
+                }
+
+                System.out.println("finish");
+        }
+        // m1() and m2() as above
+}
+
+Output (b=0):
+From m1
+From m2
+catch block executed
+finish
+
+------------------------------------------------------------
+The Exception Base Class
+------------------------------------------------------------
+- Exception is the base class for most exceptions (e.g., ArithmeticException, ArrayIndexOutOfBoundsException).
+- The catch(Exception e) block can handle any exception derived from Exception.
+
+------------------------------------------------------------
+Multiple Catch Blocks
+------------------------------------------------------------
+public class DemoEx1 {
+        public static void main(String[] args) {
+                m1(); 
+                m2();
+
+                try {
+                        int a = 10, b = 0, c;
+                        c = a / b; // ArithmeticException
+                        int[] arr = new int[3];
+                        arr[4] = c; // ArrayIndexOutOfBoundsException
+                } catch (ArithmeticException ae) {
+                        System.out.println("catch block executed (Arithmetic)");
+                } catch (ArrayIndexOutOfBoundsException aioobe) {
+                        System.out.println("catch block executed (Array)");
+                } catch (Exception e) {
+                        System.out.println("catch block executed (General)");
+                }
+
+                System.out.println("finish");
+        }
+        // m1() and m2() as above
+}
+
+- Only one catch block executes per exception.
+- Order: Specific exceptions first, then general Exception.
+
+Incorrect order (causes compile-time error):
+try {
+        // ...
+} catch (Exception e) {
+        // ...
+} catch (ArithmeticException ae) {
+        // Unreachable
+}
+
+Correct order:
+try {
+        // ...
+} catch (ArithmeticException ae) {
+        // ...
+} catch (Exception e) {
+        // ...
+}
+
+------------------------------------------------------------
+The finally Block
+------------------------------------------------------------
+- The finally block always executes after try/catch, regardless of exception.
+- Used for cleanup (closing files, releasing resources).
+
+Example:
+public class DemoEx1 {
+        public static void main(String[] args) {
+                m1(); 
+                m2();
+
+                try {
+                        int a = 10, b = 0, c;
+                        c = a / b;
+                } catch (ArithmeticException ae) {
+                        System.out.println("catch block executed (Arithmetic)");
+                } catch (Exception e) {
+                        System.out.println("catch block executed (General)");
+                } finally {
+                        System.out.println("finally block executed");
+                }
+
+                System.out.println("finish");
+        }
+        // m1() and m2() as above
+}
+
+Output (b=0):
+From m1
+From m2
+catch block executed (Arithmetic)
+finally block executed
+finish
+
+Output (b=5):
+From m1
+From m2
+c = 2
+finally block executed
+finish
+
+- If exception is not handled, finally still executes before program terminates.
+
+------------------------------------------------------------
+Valid and Invalid Try-Catch-Finally Combinations
+------------------------------------------------------------
+Valid:
+- try ... catch
+- try ... finally
+- try ... catch ... finally
+- try ... catch1 ... catch2 ...
+- try ... catch1 ... catch2 ... finally
+
+Invalid:
+- try alone (must have at least one catch or finally)
+
+------------------------------------------------------------
+Summary
+------------------------------------------------------------
+- Use try-catch to handle exceptions and prevent abrupt termination.
+- Use multiple catch blocks for specific exception handling.
+- Always order catch blocks from most specific to most general.
+- Use finally for cleanup code that must run regardless of exceptions.

@@ -1,0 +1,129 @@
+<!-- Create an object representing a car using three different methods: object literal notation, constructor function, and the Object.create() method. Each object should have properties for make, model, and year.
+
+Write a JavaScript program that calculates the area of a circle using the Math object's PI property and pow() method. Round the result to two decimal places.
+
+Write a JavaScript program that displays the current date and time using the Date object.
+
+Write a JavaScript program that demonstrates the usage of the String object's toUpperCase() and toLowerCase() methods by converting a given string to uppercase and lowercase, respectively. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Object Demonstrations</title>
+</head>
+<body>
+    <h1>JavaScript Object and Built-in Object Demonstrations</h1>
+    <p>Check the browser's developer console (usually F12) for output.</p>
+
+    <script>
+        console.log("--- 1. Creating Car Objects ---");
+
+        // Method 1: Object Literal Notation
+        const carLiteral = {
+            make: "Toyota",
+            model: "Corolla",
+            year: 2022,
+            displayInfo: function() {
+                console.log(`Literal: ${this.make} ${this.model} (${this.year})`);
+            }
+        };
+        console.log("Car (Object Literal):", carLiteral);
+        carLiteral.displayInfo();
+
+        // Method 2: Constructor Function
+        function CarConstructor(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            // You can also add methods to the constructor's prototype for efficiency
+        }
+
+        // Adding a method to the prototype
+        CarConstructor.prototype.displayInfo = function() {
+            console.log(`Constructor: ${this.make} ${this.model} (${this.year})`);
+        };
+
+        const carFromConstructor = new CarConstructor("Honda", "Civic", 2023);
+        console.log("Car (Constructor Function):", carFromConstructor);
+        carFromConstructor.displayInfo();
+
+        // Method 3: Object.create()
+        // First, define a prototype object (optional, but common use case)
+        const carPrototype = {
+            // We can put default properties or methods here
+            // For this example, let's make it simple and assign properties directly
+            // or add a shared method
+            init: function(make, model, year) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+            },
+            displayInfo: function() {
+                console.log(`Object.create(): ${this.make} ${this.model} (${this.year})`);
+            }
+        };
+
+        const carFromObjectCreate = Object.create(carPrototype);
+        // Now assign properties
+        // Option A: Direct assignment
+        // carFromObjectCreate.make = "Ford";
+        // carFromObjectCreate.model = "Mustang";
+        // carFromObjectCreate.year = 2024;
+
+        // Option B: Using an init method from the prototype
+        carFromObjectCreate.init("Ford", "Fusion", 2020);
+
+        console.log("Car (Object.create()):", carFromObjectCreate);
+        carFromObjectCreate.displayInfo();
+
+        // Another way with Object.create() if you want to define properties during creation
+        const carFromObjectCreateWithProperties = Object.create(Object.prototype, {
+            make: { value: "Tesla", writable: true, enumerable: true, configurable: true },
+            model: { value: "Model 3", writable: true, enumerable: true, configurable: true },
+            year: { value: 2024, writable: true, enumerable: true, configurable: true },
+            displayInfo: {
+                value: function() {
+                    console.log(`Object.create() with props: ${this.make} ${this.model} (${this.year})`);
+                },
+                writable: true, enumerable: false, configurable: true // method usually not enumerable
+            }
+        });
+        console.log("Car (Object.create() with properties):", carFromObjectCreateWithProperties);
+        carFromObjectCreateWithProperties.displayInfo();
+
+
+        console.log("\n--- 2. Calculating Area of a Circle ---");
+        const radius = 7.5;
+        // Area = PI * r^2
+        const areaOfCircle = Math.PI * Math.pow(radius, 2);
+        const roundedArea = areaOfCircle.toFixed(2); // Rounds to a string with 2 decimal places
+
+        console.log(`Radius of the circle: ${radius}`);
+        console.log(`Calculated area: ${areaOfCircle}`);
+        console.log(`Area rounded to two decimal places: ${roundedArea}`);
+
+
+        console.log("\n--- 3. Displaying Current Date and Time ---");
+        const currentDate = new Date();
+
+        console.log("Current Date and Time (default string):", currentDate.toString());
+        console.log("Current Date and Time (locale specific):", currentDate.toLocaleString());
+        console.log("Current Date (locale specific date):", currentDate.toLocaleDateString());
+        console.log("Current Time (locale specific time):", currentDate.toLocaleTimeString());
+        console.log("ISO String:", currentDate.toISOString());
+
+
+        console.log("\n--- 4. String toUpperCase() and toLowerCase() ---");
+        const myString = "Hello, JavaScript World! 123.";
+
+        const upperCaseString = myString.toUpperCase();
+        const lowerCaseString = myString.toLowerCase();
+
+        console.log(`Original string: "${myString}"`);
+        console.log(`Uppercase string: "${upperCaseString}"`);
+        console.log(`Lowercase string: "${lowerCaseString}"`);
+
+    </script>
+</body>
+</html>
