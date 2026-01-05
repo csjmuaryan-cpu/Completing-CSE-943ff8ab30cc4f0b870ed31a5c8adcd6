@@ -1,0 +1,60 @@
+dsa is representation of the logical relationship b/w individual element of the data.
+mainly specifies:
+1:organising of data
+2:accessing of data
+3:degree of associativity
+4:processing alternatives for imformations.
+
+ALGORITHM +DATA STRUCTURE = PROGRAMS
+classification in two ways:
+1:Primitive Data Structure
+a:integer
+b:float
+c:character
+d:pointer
+
+2:Non-Primitive Data Structure
+a:arrays
+b:lists:
+	TYPES of linked list
+		1.singly linked list
+		2.doubly linked list
+		3.circular linked list
+	a:linear list
+		a:stacks
+		b:queues
+	b:Non-Linear list
+		a:graphs
+		b:trees
+
+c:file
+
+most commonly used operations:
+1. Create
+2. Destroy or Delete
+3. Selection
+4. Updation
+
+commonly operation used in arrays are:
+1.creating of an array.
+2.traversing an array acessing an array elements.
+3.insertion of new elment.
+4.deletion of required element.
+5.Modification of an element.
+6.Merging of an arrays.
+
+Commonly operation used in linked list are:
+	1.creating of an linked list.
+	2.traversing an linked list {acessing an linked list elements}.	
+	3.insertion of new elment.
+	4.deletion of required element.
+	5.Modification of an element.
+	6.Merging of an linked list.
+
+ways of designing  an algorithm
+1.increment apporach
+2.divide and conqure
+
+the space complexity  of a program is the amount of memory is needed to run OR to complete categories in to type:
+1.fixed part that include spaces for the code,spaces for the code, space for simple variable and fixed size component variables, spaces for control etc.
+2.variable part that consist of the spaces needed by  component whose size is dependent on the particular problem instance being solved and the stack spaces used by the recurcive problem.

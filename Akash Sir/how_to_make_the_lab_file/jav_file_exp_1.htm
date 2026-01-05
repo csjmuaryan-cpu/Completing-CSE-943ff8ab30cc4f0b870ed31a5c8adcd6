@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Experiments Report - Aryan Katiyar</title>
+    <style>
+        /* --- Page Layout and Print Rules --- */
+        @page {
+            size: A4;
+            margin: 2.5cm 2cm; /* Top/Bottom and Left/Right margins */
+
+            /* ================================================= */
+            /* === THIS IS THE CODE FOR THE PAGE NUMBER FOOTER === */
+            /* ================================================= */
+            @bottom-center {
+                content: "Page " counter(page);
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 12px;
+                color: #555;
+            }
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f0f0f0; /* Gray background for on-screen view */
+            margin: 0;
+            padding: 0;
+            counter-reset: page; /* This initializes the page counter */
+        }
+        
+        .page-container {
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 0; 
+            margin: 1cm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #333; /* A4 size border */
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: always; /* Force a new page after each container */
+        }
+        
+        .page-container:last-child {
+            page-break-after: auto; /* Prevent a blank page at the end */
+        }
+
+        .content-box {
+            padding: 1.5cm;
+            border: 1px solid #888; /* Medium sub-border */
+            height: calc(100% - 3cm);
+            margin: 1.5cm;
+            box-sizing: border-box;
+        }
+        
+        body::after {
+            content: 'Aryan Katiyar 2310640100118';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 5em; font-weight: bold; color: #000;
+            opacity: 0.07; pointer-events: none; z-index: -1;
+            text-transform: uppercase;
+        }
+
+        .experiment-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 0; margin-bottom: 25px;
+        }
+
+        p, ul { text-align: justify; }
+        strong { font-weight: bold; }
+
+        pre {
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+            padding: 12px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+        }
+        code { font-family: 'Courier New', Courier, monospace; }
+    </style>
+</head>
+<body>
+
+    <!-- Experiment 1 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 1</h2>
+            <p><strong>Objective:</strong> Write a simple Java program using Eclipse IDE to display the message "Hello, Java World from Eclipse!" on the console, also use all major escape sequences.</p>
+            <p><strong>Program:</strong></p>
+<pre><code>public class EscapeDemo {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java World from Eclipse!");
+        System.out.println("\nThis is printed on a new line.");
+        System.out.println("Name:\tJohn Doe");
+        System.out.println("File path: C:\\Program Files\\Java\\jdk");
+        System.out.println("She said, \"Java is awesome!\"");
+        System.out.println("Learning Java is fun!\rStart:");
+    }  
+}</code></pre>
+            <p><strong>Output:</strong></p>
+<pre><code>Hello, Java World from Eclipse!
+
+This is printed on a new line.
+Name:   John Doe
+File path: C:\Program Files\Java\jdk
+She said, "Java is awesome!"
+Start:ng Java is fun!</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 2 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 2</h2>
+            <p><strong>Objective:</strong> Write a Java program that accepts two integer numbers as command-line arguments, calculates their sum, and displays the result.</p>
+            <p><strong>Program:</strong></p>
+<pre><code>public class CommandLineSum {
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.out.println("Please provide two integers.");
+            return;
+        }
+        try {  
+            int num1 = Integer.parseInt(args[0]);  
+            int num2 = Integer.parseInt(args[1]);
+            System.out.println("Sum is: " + (num1 + num2));  
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid integers.");
+        }
+    }
+}</code></pre>
+            <p><strong>Scenario 1 (Valid):</strong> <code>java CommandLineSum 10 25</code> -> <code>Sum is: 35</code></p>
+            <p><strong>Scenario 2 (Invalid):</strong> <code>java CommandLineSum 5 five</code> -> <code>Error: Invalid integers.</code></p>
+        </div>
+    </div>
+    
+    <!-- Experiment 3 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 3</h2>
+            <p><strong>Objective:</strong> Write a Java program to create two classes: Student and Rectangle, with methods to display their details and area respectively.</p>
+            <p><strong>Program:</strong></p>
+<pre><code>class Student { 
+    String name; int rollNo;
+    Student(String n, int r) { name = n; rollNo = r; }
+    void displayDetails() {
+        System.out.println("Name: " + name + ", Roll: " + rollNo);
+    }  
+}
+class Rectangle { 
+    double length, width;
+    Rectangle(double l, double w) { length = l; width = w; }
+    void displayArea() {
+        System.out.println("Area: " + (length * width));
+    }
+}</code></pre>
+            <p><strong>Output:</strong></p>
+<pre><code>Name: Alice, Roll: 101
+Area: 15.0</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 4 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 4</h2>
+            <p><strong>Objective:</strong> Write a Java program to demonstrate inheritance and polymorphism (method overriding and overloading).</p>
+            <p><strong>Program:</strong></p>
+<pre><code>class Animal {  
+    void makeSound() { System.out.println("Animal sound"); }
+}
+class Dog extends Animal { 
+    @Override
+    void makeSound() { System.out.println("The dog barks"); }
+    void bark(int times) { System.out.println("Barked " + times + " times"); }  
+}</code></pre>
+            <p><strong>Output:</strong></p>
+<pre><code>Animal sound
+The dog barks
+Barked 3 times</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 5 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 5</h2>
+            <p><strong>Objective:</strong> Write a Java program that demonstrates exception handling (try-catch-finally) and multithreading.</p>
+            <p><strong>Program:</strong></p>
+<pre><code>public class ExceptionAndThreadDemo {
+    public static void main(String[] args) {
+        try { int r = 10 / 0; }
+        catch (ArithmeticException e) { System.out.println("Error: / by zero"); }
+        finally { System.out.println("Finally block executed."); }
+        new Thread(() -> System.out.println("Thread 1 running")).start();
+        new Thread(() -> System.out.println("Thread 2 running")).start();
+    }
+}</code></pre>
+            <p><strong>Output (threading order may vary):</strong></p>
+<pre><code>Error: / by zero
+Finally block executed.
+Thread 1 running
+Thread 2 running</code></pre>
+        </div>
+    </div>
+    
+    <!-- Experiment 6 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 6</h2>
+            <p><strong>Objective:</strong> Demonstrate user-defined packages by creating a `studentinfo` package with a `Student` class.</p>
+            <p><strong>Directory Structure:</strong></p>
+<pre><code>Project/
+└── studentinfo/
+    └── Student.java
+└── Main.java</code></pre>
+            <p><strong>studentinfo/Student.java:</strong></p>
+<pre><code>package studentinfo;
+public class Student {
+    public void displayInfo() { System.out.println("Student from package"); }
+}</code></pre>
+            <p><strong>Main.java:</strong></p>
+<pre><code>import studentinfo.Student;
+public class Main {
+    public static void main(String[] args) { new Student().displayInfo(); }
+}</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 7 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 7</h2>
+            <p><strong>Objective:</strong> Use Java I/O streams to read from `input.txt` and write its content to `output.txt`.</p>
+            <p><strong>Program:</strong></p>
+<pre><code>import java.io.*;
+public class FileIOExample {
+    public static void main(String[] args) {
+        try (Reader r = new FileReader("input.txt");
+             Writer w = new FileWriter("output.txt")) {
+            int c;
+            while ((c = r.read()) != -1) { w.write(c); }
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+}</code></pre>
+            <p><strong>Result:</strong> After running, `output.txt` will contain a copy of the content from `input.txt`.</p>
+        </div>
+    </div>
+
+    <!-- Experiment 8 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 8</h2>
+            <p><strong>Objective:</strong> Demonstrate dependency injection in a Spring application using `@Component` and `@Autowired`.</p>
+            <p><strong>MessageService.java:</strong></p>
+<pre><code>import org.springframework.stereotype.Component;
+@Component
+public class MessageService {
+    public String getMessage() { return "Injected message!"; }
+}</code></pre>
+            <p><strong>App.java:</strong></p>
+<pre><code>@Configuration @ComponentScan(".")
+public class App {
+    @Autowired private MessageService service;
+    public void display() { System.out.println(service.getMessage()); }
+    public static void main(String[] args) {
+        // Context setup and bean retrieval
+    }
+}</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 9 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 9</h2>
+            <p><strong>Objective:</strong> Develop a RESTful web service using Spring Boot that returns a JSON message.</p>
+            <p><strong>ApiController.java:</strong></p>
+<pre><code>import org.springframework.web.bind.annotation.*;
+import java.util.Map;
+@RestController
+public class ApiController {
+    @GetMapping("/api/greeting")
+    public Map<String, String> getGreeting() {
+        return Map.of("message", "Hello from REST API!");
+    }
+}</code></pre>
+            <p><strong>Input:</strong> Make a GET request to <code>http://localhost:8080/api/greeting</code>.</p>
+            <p><strong>Output (JSON):</strong></p>
+<pre><code>{"message":"Hello from REST API!"}</code></pre>
+        </div>
+    </div>
+
+    <!-- Experiment 10 -->
+    <div class="page-container">
+        <div class="content-box">
+            <h2 class="experiment-header">Experiment 10</h2>
+            <p><strong>Objective:</strong> Build a basic web application with a form using Spring Boot and Thymeleaf.</p>
+            <p><strong>WebController.java:</strong></p>
+<pre><code>@Controller
+public class WebController {
+    @GetMapping("/") public String showForm() { return "index"; }
+    @PostMapping("/submit")
+    public String handleForm(@RequestParam String username, Model model) {
+        model.addAttribute("name", username);
+        return "result";
+    }
+}</code></pre>
+            <p><strong>index.html (Thymeleaf):</strong></p>
+<pre><code><form action="/submit" method="post">
+    <input type="text" name="username" />
+    <button type="submit">Submit</button>
+</form></code></pre>
+            <p><strong>Result:</strong> Submitting a name like "Alice" will display a page saying "Hello, Alice!".</p>
+        </div>
+    </div>
+
+</body>
+</html>

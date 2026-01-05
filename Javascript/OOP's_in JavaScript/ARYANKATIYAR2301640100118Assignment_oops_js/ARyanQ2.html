@@ -1,0 +1,61 @@
+<!-- write a javascript program that listen keyup event on an input field. When an a key is pressed and released, it should display the key that was pressed in an alert message. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyup Event Example</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Type something..." />
+
+    <script>
+        document.getElementById('myInput').addEventListener('keyup', function(event) {
+            alert('You pressed: ' + event.key);
+        });
+    </script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyup Value Demo</title>
+</head>
+<body>
+
+    <label for="textInput">Type here:</label>
+    <input type="text" id="textInput" placeholder="Enter text...">
+
+    <script>
+        // Get the input field element by its ID
+        const inputField = document.getElementById('textInput');
+
+        // Add a keyup event listener to the input field
+        inputField.addEventListener('keyup', function(event) {
+            // 'this' refers to the inputField in this context
+            // 'event.target' would also refer to the inputField
+            const currentValue = this.value; // or event.target.value
+
+            // Display the current value of the input field in the console
+            console.log('Input field value:', currentValue);
+        });
+    </script>
+
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Keyup Event Example</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Type something..." />
+
+    <script>
+        document.getElementById('myInput').addEventListener('keyup', function(event) {
+            // event.key contains the string value of the key that was pressed
+            alert('You pressed: ' + event.key);
+        });
+    </script>
+</body>
+</html> -->

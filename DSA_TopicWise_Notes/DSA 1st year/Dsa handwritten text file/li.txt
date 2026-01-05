@@ -1,0 +1,7 @@
+also write a multi file program in c for each
+1. Search for a resource
+2. Borrow a resource
+3. Return a resource
+4. Faculty collaboration
+5. Specialized services
+

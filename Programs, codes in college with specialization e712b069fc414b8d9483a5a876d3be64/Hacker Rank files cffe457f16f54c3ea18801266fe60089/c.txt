@@ -1,0 +1,79 @@
+The foreach Loop
+There is also a "for-each loop" (introduced in C++ version 11 (2011), which is used exclusively to loop through elements in an array (or other data sets):
+
+Syntax
+for (type variableName : arrayName) {
+  // code block to be executed
+}
+The following example outputs all elements in an array, using a "for-each loop":
+
+Example
+int myNumbers[5] = {10, 20, 30, 40, 50};
+for (int i : myNumbers) {
+  cout << i << "\n";
+}
+// Print the multiplication table for the numbers.
+c array real life example.
+#include <stdio.h>
+
+int main() {
+   // An array storing different ages
+  int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};
+  
+  // Get the length of the array
+  int length = sizeof(ages) / sizeof(ages[0]);
+  
+  // Create a 'lowest age' variable and assign the first array element of ages to it
+  int lowestAge = ages[0];
+
+  // Loop through the elements of the ages array to find the lowest age
+  for (int i = 0; i < length; i++) {
+  
+    // Check if the current age is smaller than current the 'lowest age'
+    if (lowestAge > ages[i]) {
+    
+      // If the smaller age is found, update 'lowest age' with that element
+      lowestAge = ages[i];
+    }
+  }
+ 
+  // Output the value of the lowest age
+  printf("The lowest age in the array is: %d", lowestAge);
+   
+  return 0;
+}
+why it is better to overload one function but not more?
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+  printf("%f\n", ceil(1.4));//rounds a number upwards to its nearest integer
+  printf("%f\n", floor(1.4));//rounds a number downwards to its nearest integer
+  return 0;
+}
+/*returns the result*/
+Other Math Functions
+A list of other popular math functions (from the <math.h> library) can be found in the table below:
+
+Function	Description
+abs(x)	Returns the absolute value of x
+acos(x)	Returns the arccosine of x
+asin(x)	Returns the arcsine of x
+atan(x)	Returns the arctangent of x
+cbrt(x)	Returns the cube root of x
+cos(x)	Returns the cosine of x
+exp(x)	Returns the value of Ex
+sin(x)	Returns the sine of x (x is in radians)
+tan(x)	Returns the tangent of an angle
+Why And When To Use Enums?
+Enums are used to give names to constants, which makes the code easier to read and maintain.
+Use enums when you have values that you know aren't going to change, like month days, days, colors, deck of cards, etc.
+Why is it important to know?
+If you create a program that occupies too much, or unnecessary memory, it can result in slow and poor performance.
+In C, you have to manage memory yourself. It is a complicated task, but is also quite powerful when used correctly: Properly managing the computer memory optimizes the performance of the program, so it is useful that you know how to release memory when it is no longer required and only use as little as necessary for the task.
+In previous chapters you learned about memory addresses and pointers.
+Both have an importance when it comes to memory management, since it is possible to work directly with memory through pointers.
+But be careful; pointers must be handled with care, since it is possible to damage data stored in other memory addresses.
+Memory Management
+Memory management is the process of handling how much memory a program uses through allocation, reallocation and deallocation (often referred to as "freeing"). We will introduce each of these topics in the following chapters.
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open WhatsApp Links</title>
+</head>
+<body>
+<h2>Opening WhatsApp links...</h2>
+<script>
+const links = [
+  "https://wa.me/+919336513241",
+  "https://wa.me/919555530090",
+  "https://wa.me/919555754621",
+  "https://wa.me/919569280443",
+  "https://wa.me/919580650906",
+  "https://wa.me/919580998819",
+  "https://wa.me/919628979410",
+  "https://wa.me/919651561863",
+  "https://wa.me/919795167302",
+  "https://wa.me/919927418354",
+  "https://wa.me/919936694851",
+  "https://wa.me/918810798695",
+  "https://wa.me/918948582553",
+  "https://wa.me/918960156070",
+  "https://wa.me/919026137802",
+  "https://wa.me/919026898987",
+  "https://wa.me/919044008425",
+  "https://wa.me/919068540512",
+  "https://wa.me/919120554713",
+  "https://wa.me/919151234888",
+  "https://wa.me/919161935058",
+  "https://wa.me/919305694060",
+  "https://wa.me/918081603675",
+  "https://wa.me/918090388908",
+  "https://wa.me/918090505892",
+  "https://wa.me/918299490337",
+  "https://wa.me/918299503201",
+  "https://wa.me/918303486205",
+  "https://wa.me/918318344498",
+  "https://wa.me/918471044624",
+  "https://wa.me/918532955211",
+  "https://wa.me/918726470082",
+  "https://wa.me/918808803944",
+  "https://wa.me/916394816739"
+];
+
+links.forEach(link => {
+  window.open(link, '_blank');
+});
+</script>
+</body>
+</html>

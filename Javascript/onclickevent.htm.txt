@@ -1,0 +1,102 @@
+<html>
+<head>
+<script>
+{alert("Button CLick event");}
+</script>
+<body>
+<input type="button""values="click me" onclick="f1()">
+<img src="C:\Users\Aryan Katiyar\Pictures\Screenshots\Screenshots(12)" ondbclick="f1()">
+<table>
+<thead>
+<tr>
+<th><span>Differences &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></th>
+<th><span>Linux</span></th>
+<th><span>Unix</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th><span>Origins</span></th>
+<td><span>&nbsp;Linux was developed in the 1990s by Linus Torvalds as a free and open-source alternative to Unix.</span></td>
+<td><span>Unix was developed in the 1970s at Bell Labs</span></td>
+</tr>
+<tr>
+<th><span>Introduction</span></th>
+<td><a href="https://www.geeksforgeeks.org/introduction-to-linux-operating-system/"><span>Linux</span></a><span> is Open Source, and a large number of programmers work together online and contribute to its development.</span></td>
+<td><a href="https://www.geeksforgeeks.org/introduction-to-unix-system/"><span>Unix</span></a><span> was developed by AT&amp;T Labs, different commercial vendors, and non-profit organizations.</span></td>
+</tr>
+<tr>
+<th><span>Licensing</span></th>
+<td><span>Linux, on the other hand, is open-source software and can be used freely without any licensing fees.</span></td>
+<td><span>Unix is a proprietary operating system, meaning that it requires a license to use.</span></td>
+</tr>
+<tr>
+<th><span>Kernels</span></th>
+<td><span>both have a similar design but are less complex than the Unixhold-upthat kernel.</span></td>
+<td><span>both have a similar design but larger and more complex than the Linux kernel.</span></td>
+</tr>
+<tr>
+<th><span>Availability</span></th>
+<td><span>On the other hand, Linux is widely used on both enterprise and personal computers.</span></td>
+<td><span>Unix is typically found on enterprise-level servers and workstations and is less commonly used on personal computers.</span></td>
+</tr>
+<tr>
+<th><span>Community Support:</span></th>
+<td><span>Linux has a large and active community of developers and users who contribute to its development and provide support.</span></td>
+<td><span>While Unix also has a community, it is generally smaller and more focused on enterprise-level users.</span></td>
+</tr>
+<tr>
+<th><span>Accessibility</span></th>
+<td><span>It is an open-source operating system which is freely accessible to everyone.</span></td>
+<td><span>It is an operating system which can only be utilized by its copywriters.</span></td>
+</tr>
+<tr>
+<th><span>bug fixing time</span></th>
+<td><span>Threat recognition and solution is very fast because Linux is mainly community driven. So, if any Linux client poses any sort of threat, a team of qualified developers starts working to resolve this threat.</span></td>
+<td><span>Unix clients require longer hold up time, to get the best possible bug-fixing,and a &nbsp;patch.</span></td>
+</tr>
+<tr>
+<th><span>File system supports</span></th>
+<td><span>File system supports – Ext2, Ext3, Ext4, Jfs, ReiserFS, Xfs, Btrfs, FAT, FAT32, NTFS</span></td>
+<td><span>File system supports – jfs, gpfs, hfs, hfs+, ufs, xfs, zfs</span></td>
+</tr>
+<tr>
+<th><span>Graphical User Interface</span></th>
+<td><span>Linux provides two </span><a href="https://www.geeksforgeeks.org/gui-full-form/#:~:text=GUI%20stands%20for%20Graphical%20User,a%20user%20wants%20to%20visualize."><span>GUIs</span></a><span>, </span><a href="https://www.geeksforgeeks.org/how-to-install-kde-plasma-desktop-on-linux-mint/"><span>KDE</span></a><span> and </span><a href="https://www.geeksforgeeks.org/how-to-install-gnome-3-16-on-linux-mint/#:~:text=For%20many%20top%2Dtier%20Linux,normal%2C%20advanced%20users%20like%20it."><span>Gnome</span></a><span>. But there are many other options. For example, LXDE, Xfce, Unity, Mate, and so on.</span></td>
+<td><span>Initially, Unix was a command-based OS, however later a GUI was created called Common Desktop Environment. Most distributions now ship with Gnome.</span></td>
+</tr>
+<tr>
+<th><span>Use Cases</span></th>
+<td><span>It is used everywhere from servers, PCs, smartphones, tablets to mainframes.</span></td>
+<td><span>It is used on servers, workstations, and PCs.</span></td>
+</tr>
+<tr>
+<th><span>Shell Compatibility</span></th>
+<td><span>The default interface is </span><a href="https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/"><span>BASH</span></a><span> (Bourne Again Shell). Anybody can use Linux whether a home client, developer or a student.</span></td>
+<td><span>It initially used Bourne shell. But it is also compatible with other GUIs. Developed mainly for servers, workstations, and mainframes.</span></td>
+</tr>
+<tr>
+<th><span>Source Code Availability</span></th>
+<td><span>The source is accessible to the general public.</span></td>
+<td><span>The source is not accessible to the general public.</span></td>
+</tr>
+<tr>
+<th><span>Hardware Compatibility</span></th>
+<td><span>Originally developed for Intel’s x86 hardware processors. It is available for more than twenty different types of CPU which also includes an ARM.</span></td>
+<td><span>It is available on PA-RISC and Itanium machines.</span></td>
+</tr>
+<tr>
+<th><span>Virus Threats&nbsp;</span></th>
+<td><span>It has about 60-100 viruses listed to date.</span></td>
+<td><span>It has about 85-120 viruses listed to date (rough estimate).</span></td>
+</tr>
+<tr>
+<th><span>Operating System Versions</span></th>
+<td><span>Some Linux versions are </span><a href="https://www.geeksforgeeks.org/interesting-facts-about-ubuntu/"><span>Ubuntu</span></a><span>, </span><a href="https://www.geeksforgeeks.org/debian-software-package-managementdpkg-in-linux/"><span>Debian</span></a><span> GNU, </span><a href="https://www.geeksforgeeks.org/what-is-arch-linux/#:~:text=Arch%20Linux%20is%20an%20independent,%2C%20user%20centrality%2C%20and%20versatility."><span>Arch Linux</span></a><span>, etc.</span></td>
+<td><span>Some Unix versions are SunOS, </span><a href="https://www.geeksforgeeks.org/difference-between-windows-and-solaris/#:~:text=Solaris%20is%20a%20proprietary%20operating,an%20Unix%2Dlike%20operating%20system."><span>Solaris</span></a><span>, SCO UNIX, </span><a href="https://www.geeksforgeeks.org/difference-between-aix-and-ios/"><span>AIX</span></a><span>, </span><a href="https://www.geeksforgeeks.org/difference-between-linux-and-hp-ux/#:~:text=HP%2DUX%20is%20a%20closed,based%20on%20Unix%20System%20V."><span>HP/UX</span></a><span>, ULTRIX, etc.</span></td>
+</tr>
+</tbody>
+</table>
+</body>
+</head>
+</html>

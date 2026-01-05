@@ -1,0 +1,1649 @@
+Welcome to the exciting class of Professor Manasa. In each lecture she used to play some game while teaching a new concept. Today's topic is Set Theory. For today's game, she had given a set A = {a1, a2, ...aN} of N integers to her students and asked them to play the game as follows.
+
+At each step of the game she calls a random student and asks him/her to select a non-empty subset from set A such that this subset had not been selected earlier and the sum of subset should be even. This game ends when all possible subsets had been selected. Manasa needs your help in counting the total number of times students can be called assuming each student gives the right answer. While it is given that if two numbers are same in the given set, they have different colors. It means that if a1 = a2, then choosing a1 and choosing a2 will be considered as different sets.
+
+Note
+
+Two subsets are different if there exists an element (ak) that is present in one subset but not in other. Let's say set A = {a1, a2, a3} = {2, 2, 3}, then all possible subsets are {}, {a1}, {a2}, {a3}, {a1, a2}, {a1, a3}, {a2, a3}, {a1, a2, a3} which is equivalent to {}, {2}, {2}, {3}, {2, 2}, {2, 3}, {2, 3}, {2, 2, 3}.
+
+Students can be called multiple times.
+
+Input Format
+The first line contains an integer N i.e. size of set A.
+Next line will contain N integers, each representing an element of A.
+
+Output Format
+Print number of time students are called. As this number can be very large you have to print the answer modulo (109 + 7).
+
+Constraints
+1 ≤ N ≤ 105
+0 ≤ ai ≤ 104 , where i ∈ [1 .. N]
+
+Sample Input 00
+
+4
+2 4 6 1
+Sample Output 00
+
+7
+Sample Input 01
+
+3
+1 2 2
+Sample Output 01
+
+3
+Explanation
+There are 7 different ways in which a non-empty subset, with even sum, can be selected, i.e., {2}, {4}, {6}, {2, 4}, {2, 6}, {4, 6}, {2, 4, 6}.
+
+For second sample test case, there are 3 different ways in which a non-empty subset, with even sum, can be selected, i.e., {a2}, {a3}, {a2, a3} which is equivalent to {2}, {2}, {2,2}.
+
+Contest ends in 8 hours
+Submissions: 0
+Max Score: 40
+Difficulty: Easy
+Rate This Challenge:
+
+    
+More
+ 
+1
+#include <assert.h>
+2
+#include <ctype.h>
+3
+#include <limits.h>
+4
+#include <math.h>
+5
+#include <stdbool.h>
+6
+#include <stddef.h>
+7
+#include <stdint.h>
+8
+#include <stdio.h>
+9
+#include <stdlib.h>
+10
+#include <string.h>
+11
+​
+12
+char* readline();
+13
+char* ltrim(char*);
+14
+char* rtrim(char*);
+15
+char** split_string(char*);
+16
+​
+17
+int parse_int(char*);
+18
+​
+19
+/*
+20
+ * Complete the 'solve' function below.
+21
+ *
+22
+ * The function is expected to return an INTEGER.
+23
+ * The function accepts INTEGER_ARRAY a as parameter.
+24
+ */
+25
+​
+26
+int solve(int a_count, int* a) {
+27
+​
+28
+}
+29
+​
+30
+int main()
+31
+{
+32
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+33
+​
+34
+    int a_count = parse_int(ltrim(rtrim(readline())));
+35
+​
+36
+    char** a_temp = split_string(rtrim(readline()));
+37
+​
+38
+    int* a = malloc(a_count * sizeof(int));
+39
+​
+40
+    for (int i = 0; i < a_count; i++) {
+41
+        int a_item = parse_int(*(a_temp + i));
+42
+​
+43
+        *(a + i) = a_item;
+44
+    }
+45
+​
+46
+    int result = solve(a_count, a);
+47
+​
+48
+    fprintf(fptr, "%d\n", result);
+49
+​
+50
+    fclose(fptr);
+51
+​
+52
+    return 0;
+53
+}
+54
+​
+55
+char* readline() {
+56
+    size_t alloc_length = 1024;
+57
+    size_t data_length = 0;
+58
+​
+59
+    char* data = malloc(alloc_length);
+60
+​
+61
+    while (true) {
+62
+        char* cursor = data + data_length;
+63
+        char* line = fgets(cursor, alloc_length - data_length, stdin);
+64
+​
+65
+        if (!line) {
+66
+            break;
+67
+        }
+68
+​
+69
+        data_length += strlen(cursor);
+70
+​
+71
+        if (data_length < alloc_length - 1 || data[data_length - 1] == '\n') {
+72
+            break;
+73
+        }
+74
+​
+75
+        alloc_length <<= 1;
+76
+​
+77
+        data = realloc(data, alloc_length);
+78
+​
+79
+        if (!data) {
+80
+            data = '\0';
+81
+​
+82
+            break;
+83
+        }
+84
+    }
+85
+​
+86
+    if (data[data_length - 1] == '\n') {
+87
+        data[data_length - 1] = '\0';
+88
+​
+89
+        data = realloc(data, data_length);
+90
+​
+91
+        if (!data) {
+92
+            data = '\0';
+93
+        }
+94
+    } else {
+95
+        data = realloc(data, data_length + 1);
+96
+​
+97
+        if (!data) {
+98
+            data = '\0';
+99
+        } else {
+100
+            data[data_length] = '\0';
+101
+        }
+102
+    }
+103
+​
+104
+    return data;
+105
+}
+106
+​
+107
+char* ltrim(char* str) {
+108
+    if (!str) {
+109
+        return '\0';
+110
+    }
+111
+​
+112
+    if (!*str) {
+113
+        return str;
+114
+    }
+115
+​
+116
+    while (*str != '\0' && isspace(*str)) {
+117
+        str++;
+118
+    }
+119
+​
+120
+    return str;
+121
+}
+122
+​
+123
+char* rtrim(char* str) {
+124
+    if (!str) {
+125
+        return '\0';
+126
+    }
+127
+​
+128
+    if (!*str) {
+129
+        return str;
+130
+    }
+131
+​
+132
+    char* end = str + strlen(str) - 1;
+133
+​
+134
+    while (end >= str && isspace(*end)) {
+135
+        end--;
+136
+    }
+137
+​
+138
+    *(end + 1) = '\0';
+139
+​
+140
+    return str;
+141
+}
+142
+​
+143
+char** split_string(char* str) {
+144
+    char** splits = NULL;
+145
+    char* token = strtok(str, " ");
+146
+​
+147
+    int spaces = 0;
+148
+​
+149
+    while (token) {
+150
+        splits = realloc(splits, sizeof(char*) * ++spaces);
+151
+​
+152
+        if (!splits) {
+153
+            return splits;
+154
+        }
+155
+​
+156
+        splits[spaces - 1] = token;
+157
+​
+158
+        token = strtok(NULL, " ");
+159
+    }
+160
+​
+161
+    return splits;
+162
+}
+163
+​
+164
+int parse_int(char* str) {
+165
+    char* endptr;
+166
+    int value = strtol(str, &endptr, 10);
+167
+​
+168
+    if (endptr == str || *endptr != '\0') {
+169
+        exit(EXIT_FAILURE);
+170
+    }
+171
+​
+172
+    return value;
+173
+}
+174
+​Welcome to the exciting class of Professor Manasa. In each lecture she used to play some game while teaching a new concept. Today's topic is Set Theory. For today's game, she had given a set A = {a1, a2, ...aN} of N integers to her students and asked them to play the game as follows.
+
+At each step of the game she calls a random student and asks him/her to select a non-empty subset from set A such that this subset had not been selected earlier and the sum of subset should be even. This game ends when all possible subsets had been selected. Manasa needs your help in counting the total number of times students can be called assuming each student gives the right answer. While it is given that if two numbers are same in the given set, they have different colors. It means that if a1 = a2, then choosing a1 and choosing a2 will be considered as different sets.
+
+Note
+
+Two subsets are different if there exists an element (ak) that is present in one subset but not in other. Let's say set A = {a1, a2, a3} = {2, 2, 3}, then all possible subsets are {}, {a1}, {a2}, {a3}, {a1, a2}, {a1, a3}, {a2, a3}, {a1, a2, a3} which is equivalent to {}, {2}, {2}, {3}, {2, 2}, {2, 3}, {2, 3}, {2, 2, 3}.
+
+Students can be called multiple times.
+
+Input Format
+The first line contains an integer N i.e. size of set A.
+Next line will contain N integers, each representing an element of A.
+
+Output Format
+Print number of time students are called. As this number can be very large you have to print the answer modulo (109 + 7).
+
+Constraints
+1 ≤ N ≤ 105
+0 ≤ ai ≤ 104 , where i ∈ [1 .. N]
+
+Sample Input 00
+
+4
+2 4 6 1
+Sample Output 00
+
+7
+Sample Input 01
+
+3
+1 2 2
+Sample Output 01
+
+3
+Explanation
+There are 7 different ways in which a non-empty subset, with even sum, can be selected, i.e., {2}, {4}, {6}, {2, 4}, {2, 6}, {4, 6}, {2, 4, 6}.
+
+For second sample test case, there are 3 different ways in which a non-empty subset, with even sum, can be selected, i.e., {a2}, {a3}, {a2, a3} which is equivalent to {2}, {2}, {2,2}.
+
+Contest ends in 8 hours
+Submissions: 0
+Max Score: 40
+Difficulty: Easy
+Rate This Challenge:
+
+    
+More
+ 
+1
+#include <assert.h>
+2
+#include <ctype.h>
+3
+#include <limits.h>
+4
+#include <math.h>
+5
+#include <stdbool.h>
+6
+#include <stddef.h>
+7
+#include <stdint.h>
+8
+#include <stdio.h>
+9
+#include <stdlib.h>
+10
+#include <string.h>
+11
+​
+12
+char* readline();
+13
+char* ltrim(char*);
+14
+char* rtrim(char*);
+15
+char** split_string(char*);
+16
+​
+17
+int parse_int(char*);
+18
+​
+19
+/*
+20
+ * Complete the 'solve' function below.
+21
+ *
+22
+ * The function is expected to return an INTEGER.
+23
+ * The function accepts INTEGER_ARRAY a as parameter.
+24
+ */
+25
+​
+26
+int solve(int a_count, int* a) {
+27
+​
+28
+}
+29
+​
+30
+int main()
+31
+{
+32
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+33
+​
+34
+    int a_count = parse_int(ltrim(rtrim(readline())));
+35
+​
+36
+    char** a_temp = split_string(rtrim(readline()));
+37
+​
+38
+    int* a = malloc(a_count * sizeof(int));
+39
+​
+40
+    for (int i = 0; i < a_count; i++) {
+41
+        int a_item = parse_int(*(a_temp + i));
+42
+​
+43
+        *(a + i) = a_item;
+44
+    }
+45
+​
+46
+    int result = solve(a_count, a);
+47
+​
+48
+    fprintf(fptr, "%d\n", result);
+49
+​
+50
+    fclose(fptr);
+51
+​
+52
+    return 0;
+53
+}
+54
+​
+55
+char* readline() {
+56
+    size_t alloc_length = 1024;
+57
+    size_t data_length = 0;
+58
+​
+59
+    char* data = malloc(alloc_length);
+60
+​
+61
+    while (true) {
+62
+        char* cursor = data + data_length;
+63
+        char* line = fgets(cursor, alloc_length - data_length, stdin);
+64
+​
+65
+        if (!line) {
+66
+            break;
+67
+        }
+68
+​
+69
+        data_length += strlen(cursor);
+70
+​
+71
+        if (data_length < alloc_length - 1 || data[data_length - 1] == '\n') {
+72
+            break;
+73
+        }
+74
+​
+75
+        alloc_length <<= 1;
+76
+​
+77
+        data = realloc(data, alloc_length);
+78
+​
+79
+        if (!data) {
+80
+            data = '\0';
+81
+​
+82
+            break;
+83
+        }
+84
+    }
+85
+​
+86
+    if (data[data_length - 1] == '\n') {
+87
+        data[data_length - 1] = '\0';
+88
+​
+89
+        data = realloc(data, data_length);
+90
+​
+91
+        if (!data) {
+92
+            data = '\0';
+93
+        }
+94
+    } else {
+95
+        data = realloc(data, data_length + 1);
+96
+​
+97
+        if (!data) {
+98
+            data = '\0';
+99
+        } else {
+100
+            data[data_length] = '\0';
+101
+        }
+102
+    }
+103
+​
+104
+    return data;
+105
+}
+106
+​
+107
+char* ltrim(char* str) {
+108
+    if (!str) {
+109
+        return '\0';
+110
+    }
+111
+​
+112
+    if (!*str) {
+113
+        return str;
+114
+    }
+115
+​
+116
+    while (*str != '\0' && isspace(*str)) {
+117
+        str++;
+118
+    }
+119
+​
+120
+    return str;
+121
+}
+122
+​
+123
+char* rtrim(char* str) {
+124
+    if (!str) {
+125
+        return '\0';
+126
+    }
+127
+​
+128
+    if (!*str) {
+129
+        return str;
+130
+    }
+131
+​
+132
+    char* end = str + strlen(str) - 1;
+133
+​
+134
+    while (end >= str && isspace(*end)) {
+135
+        end--;
+136
+    }
+137
+​
+138
+    *(end + 1) = '\0';
+139
+​
+140
+    return str;
+141
+}
+142
+​
+143
+char** split_string(char* str) {
+144
+    char** splits = NULL;
+145
+    char* token = strtok(str, " ");
+146
+​
+147
+    int spaces = 0;
+148
+​
+149
+    while (token) {
+150
+        splits = realloc(splits, sizeof(char*) * ++spaces);
+151
+​
+152
+        if (!splits) {
+153
+            return splits;
+154
+        }
+155
+​
+156
+        splits[spaces - 1] = token;
+157
+​
+158
+        token = strtok(NULL, " ");
+159
+    }
+160
+​
+161
+    return splits;
+162
+}
+163
+​
+164
+int parse_int(char* str) {
+165
+    char* endptr;
+166
+    int value = strtol(str, &endptr, 10);
+167
+​
+168
+    if (endptr == str || *endptr != '\0') {
+169
+        exit(EXIT_FAILURE);
+170
+    }
+171
+​
+172
+    return value;
+173
+}
+174
+​
+HackerRank Home
+HackerRank
+|
+Prepare
+Certify
+Compete
+Apply
+Search
+ 
+All Contests  h-cs1c-05july  A Chocolate Fiesta
+A Chocolate Fiesta
+Problem
+Submissions
+Leaderboard
+Discussions
+Welcome to the exciting class of Professor Manasa. In each lecture she used to play some game while teaching a new concept. Today's topic is Set Theory. For today's game, she had given a set A = {a1, a2, ...aN} of N integers to her students and asked them to play the game as follows.
+
+At each step of the game she calls a random student and asks him/her to select a non-empty subset from set A such that this subset had not been selected earlier and the sum of subset should be even. This game ends when all possible subsets had been selected. Manasa needs your help in counting the total number of times students can be called assuming each student gives the right answer. While it is given that if two numbers are same in the given set, they have different colors. It means that if a1 = a2, then choosing a1 and choosing a2 will be considered as different sets.
+
+Note
+
+Two subsets are different if there exists an element (ak) that is present in one subset but not in other. Let's say set A = {a1, a2, a3} = {2, 2, 3}, then all possible subsets are {}, {a1}, {a2}, {a3}, {a1, a2}, {a1, a3}, {a2, a3}, {a1, a2, a3} which is equivalent to {}, {2}, {2}, {3}, {2, 2}, {2, 3}, {2, 3}, {2, 2, 3}.
+
+Students can be called multiple times.
+
+Input Format
+The first line contains an integer N i.e. size of set A.
+Next line will contain N integers, each representing an element of A.
+
+Output Format
+Print number of time students are called. As this number can be very large you have to print the answer modulo (109 + 7).
+
+Constraints
+1 ≤ N ≤ 105
+0 ≤ ai ≤ 104 , where i ∈ [1 .. N]
+
+Sample Input 00
+
+4
+2 4 6 1
+Sample Output 00
+
+7
+Sample Input 01
+
+3
+1 2 2
+Sample Output 01
+
+3
+Explanation
+There are 7 different ways in which a non-empty subset, with even sum, can be selected, i.e., {2}, {4}, {6}, {2, 4}, {2, 6}, {4, 6}, {2, 4, 6}.
+
+For second sample test case, there are 3 different ways in which a non-empty subset, with even sum, can be selected, i.e., {a2}, {a3}, {a2, a3} which is equivalent to {2}, {2}, {2,2}.
+
+Contest ends in 8 hours
+Submissions: 0
+Max Score: 40
+Difficulty: Easy
+Rate This Challenge:
+
+    
+More
+ 
+1
+#include <assert.h>
+2
+#include <ctype.h>
+3
+#include <limits.h>
+4
+#include <math.h>
+5
+#include <stdbool.h>
+6
+#include <stddef.h>
+7
+#include <stdint.h>
+8
+#include <stdio.h>
+9
+#include <stdlib.h>
+10
+#include <string.h>
+11
+​
+12
+char* readline();
+13
+char* ltrim(char*);
+14
+char* rtrim(char*);
+15
+char** split_string(char*);
+16
+​
+17
+int parse_int(char*);
+18
+​
+19
+/*
+20
+ * Complete the 'solve' function below.
+21
+ *
+22
+ * The function is expected to return an INTEGER.
+23
+ * The function accepts INTEGER_ARRAY a as parameter.
+24
+ */
+25
+​
+26
+int solve(int a_count, int* a) {
+27
+​
+28
+}
+29
+​
+30
+int main()
+31
+{
+32
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+33
+​
+34
+    int a_count = parse_int(ltrim(rtrim(readline())));
+35
+​
+36
+    char** a_temp = split_string(rtrim(readline()));
+37
+​
+38
+    int* a = malloc(a_count * sizeof(int));
+39
+​
+40
+    for (int i = 0; i < a_count; i++) {
+41
+        int a_item = parse_int(*(a_temp + i));
+42
+​
+43
+        *(a + i) = a_item;
+44
+    }
+45
+​
+46
+    int result = solve(a_count, a);
+47
+​
+48
+    fprintf(fptr, "%d\n", result);
+49
+​
+50
+    fclose(fptr);
+51
+​
+52
+    return 0;
+53
+}
+54
+​
+55
+char* readline() {
+56
+    size_t alloc_length = 1024;
+57
+    size_t data_length = 0;
+58
+​
+59
+    char* data = malloc(alloc_length);
+60
+​
+61
+    while (true) {
+62
+        char* cursor = data + data_length;
+63
+        char* line = fgets(cursor, alloc_length - data_length, stdin);
+64
+​
+65
+        if (!line) {
+66
+            break;
+67
+        }
+68
+​
+69
+        data_length += strlen(cursor);
+70
+​
+71
+        if (data_length < alloc_length - 1 || data[data_length - 1] == '\n') {
+72
+            break;
+73
+        }
+74
+​
+75
+        alloc_length <<= 1;
+76
+​
+77
+        data = realloc(data, alloc_length);
+78
+​
+79
+        if (!data) {
+80
+            data = '\0';
+81
+​
+82
+            break;
+83
+        }
+84
+    }
+85
+​
+86
+    if (data[data_length - 1] == '\n') {
+87
+        data[data_length - 1] = '\0';
+88
+​
+89
+        data = realloc(data, data_length);
+90
+​
+91
+        if (!data) {
+92
+            data = '\0';
+93
+        }
+94
+    } else {
+95
+        data = realloc(data, data_length + 1);
+96
+​
+97
+        if (!data) {
+98
+            data = '\0';
+99
+        } else {
+100
+            data[data_length] = '\0';
+101
+        }
+102
+    }
+103
+​
+104
+    return data;
+105
+}
+106
+​
+107
+char* ltrim(char* str) {
+108
+    if (!str) {
+109
+        return '\0';
+110
+    }
+111
+​
+112
+    if (!*str) {
+113
+        return str;
+114
+    }
+115
+​
+116
+    while (*str != '\0' && isspace(*str)) {
+117
+        str++;
+118
+    }
+119
+​
+120
+    return str;
+121
+}
+122
+​
+123
+char* rtrim(char* str) {
+124
+    if (!str) {
+125
+        return '\0';
+126
+    }
+127
+​
+128
+    if (!*str) {
+129
+        return str;
+130
+    }
+131
+​
+132
+    char* end = str + strlen(str) - 1;
+133
+​
+134
+    while (end >= str && isspace(*end)) {
+135
+        end--;
+136
+    }
+137
+​
+138
+    *(end + 1) = '\0';
+139
+​
+140
+    return str;
+141
+}
+142
+​
+143
+char** split_string(char* str) {
+144
+    char** splits = NULL;
+145
+    char* token = strtok(str, " ");
+146
+​
+147
+    int spaces = 0;
+148
+​
+149
+    while (token) {
+150
+        splits = realloc(splits, sizeof(char*) * ++spaces);
+151
+​
+152
+        if (!splits) {
+153
+            return splits;
+154
+        }
+155
+​
+156
+        splits[spaces - 1] = token;
+157
+​
+158
+        token = strtok(NULL, " ");
+159
+    }
+160
+​
+161
+    return splits;
+162
+}
+163
+​
+164
+int parse_int(char* str) {
+165
+    char* endptr;
+166
+    int value = strtol(str, &endptr, 10);
+167
+​
+168
+    if (endptr == str || *endptr != '\0') {
+169
+        exit(EXIT_FAILURE);
+170
+    }
+171
+​
+172
+    return value;
+173
+}
+
+ IN C ANSWER THE TEST CASE FAILS:
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+#define MOD 1000000007
+
+int64_t power(int64_t base, int64_t exp, int64_t mod) {
+    int64_t result = 1;
+    while (exp > 0) {
+        if (exp % 2 == 1)
+            result = (result * base) % mod;
+        base = (base * base) % mod;
+        exp /= 2;
+    }
+    return result;
+}
+int64_t count_subsets(int N, int arr[]) {
+    int freq[10005] = {0};
+    for (int i = 0; i < N; ++i) {
+        freq[arr[i]]++;
+    }
+    
+    int64_t total_subsets = 1;
+    for (int i = 0; i <= 10000; ++i) {
+        if (freq[i] > 0) {
+            total_subsets = (total_subsets * (power(2, freq[i], MOD) + 1)) % MOD;
+        }
+    }
+    
+    return total_subsets;
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+    
+    int arr[N];
+    for (int i = 0; i < N; ++i) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Calculate and print the number of distinct subsets modulo 10^9 + 7
+    int64_t result = count_subsets(N, arr);
+    printf("%ld\n", result);
+    
+    return 0;
+}
+IN THIS TEST CASE ALL THE TEST CASE PASS
+
+QUESTION 2 
+HackerRank Home
+HackerRank
+|
+Prepare
+Certify
+Compete
+Apply
+Search
+ 
+All Contests  h-cs1c-05july  Repeated String
+Repeated String
+Problem
+Submissions
+Leaderboard
+Discussions
+There is a string, , of lowercase English letters that is repeated infinitely many times. Given an integer, , find and print the number of letter a's in the first  letters of the infinite string.
+
+Example
+
+
+The substring we consider is , the first  characters of the infinite string. There are  occurrences of a in the substring.
+
+Function Description
+
+Complete the repeatedString function in the editor below.
+
+repeatedString has the following parameter(s):
+
+s: a string to repeat
+n: the number of characters to consider
+Returns
+
+int: the frequency of a in the substring
+Input Format
+
+The first line contains a single string, .
+The second line contains an integer, .
+
+Constraints
+
+For  of the test cases, .
+Sample Input
+
+Sample Input 0
+
+aba
+10
+Sample Output 0
+
+7
+Explanation 0
+The first  letters of the infinite string are abaabaabaa. Because there are  a's, we return .
+
+Sample Input 1
+
+a
+1000000000000
+Sample Output 1
+
+1000000000000
+Explanation 1
+Because all of the first  letters of the infinite string are a, we return .
+
+Contest ends in 8 hours
+Submissions: 43
+Max Score: 20
+Difficulty: Easy
+Rate This Challenge:
+
+    
+More
+ 
+1
+#include <bits/stdc++.h>
+2
+​
+3
+using namespace std;
+4
+​
+5
+string ltrim(const string &);
+6
+string rtrim(const string &);
+7
+​
+8
+/*
+9
+ * Complete the 'repeatedString' function below.
+10
+ *
+11
+ * The function is expected to return a LONG_INTEGER.
+12
+ * The function accepts following parameters:
+13
+ *  1. STRING s
+14
+ *  2. LONG_INTEGER n
+15
+ */
+16
+​
+17
+long repeatedString(string s, long n) {
+18
+​
+19
+}
+20
+​
+21
+int main()
+22
+{
+23
+    ofstream fout(getenv("OUTPUT_PATH"));
+24
+​
+25
+    string s;
+26
+    getline(cin, s);
+27
+​
+28
+    string n_temp;
+29
+    getline(cin, n_temp);
+30
+​
+31
+    long n = stol(ltrim(rtrim(n_temp)));
+32
+​
+33
+    long result = repeatedString(s, n);
+34
+​
+35
+    fout << result << "\n";
+36
+​
+37
+    fout.close();
+38
+​
+39
+    return 0;
+40
+}
+41
+​
+42
+string ltrim(const string &str) {
+43
+    string s(str);
+44
+​
+45
+    s.erase(
+46
+        s.begin(),
+47
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+48
+    );
+49
+​
+50
+    return s;
+51
+}
+52
+​
+53
+string rtrim(const string &str) {
+54
+    string s(str);
+55
+​
+56
+    s.erase(
+57
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+58
+        s.end()
+59
+    );
+60
+​
+61
+    return s;
+62
+}
+63
+​
+Line: 1 Col: 1
+Run Code Submit CodeUpload Code as File 
+Test against custom input
+Interview Prep | Blog | Scoring | Environment | FAQ | About Us | Support | Careers | Terms Of Service | Privacy Policy |
+
+
+ANS2
+#include <assert.h>
+#include <ctype.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* readline();
+char* ltrim(char*);
+char* rtrim(char*);
+
+long parse_long(char*);
+
+/*
+ * Complete the 'repeatedString' function below.
+ *
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts following parameters:
+ *  1. STRING s
+ *  2. LONG_INTEGER n
+ */
+
+long repeatedString(char* s, long n) {
+
+}
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    char* s = readline();
+
+    long n = parse_long(ltrim(rtrim(readline())));
+
+    long result = repeatedString(s, n);
+
+    fprintf(fptr, "%ld\n", result);
+
+    fclose(fptr);
+
+    return 0;
+}
+
+char* readline() {
+    size_t alloc_length = 1024;
+    size_t data_length = 0;
+
+    char* data = malloc(alloc_length);
+
+    while (true) {
+        char* cursor = data + data_length;
+        char* line = fgets(cursor, alloc_length - data_length, stdin);
+
+        if (!line) {
+            break;
+        }
+
+        data_length += strlen(cursor);
+
+        if (data_length < alloc_length - 1 || data[data_length - 1] == '\n') {
+            break;
+        }
+
+        alloc_length <<= 1;
+
+        data = realloc(data, alloc_length);
+
+        if (!data) {
+            data = '\0';
+
+            break;
+        }
+    }
+
+    if (data[data_length - 1] == '\n') {
+        data[data_length - 1] = '\0';
+
+        data = realloc(data, data_length);
+
+        if (!data) {
+            data = '\0';
+        }
+    } else {
+        data = realloc(data, data_length + 1);
+
+        if (!data) {
+            data = '\0';
+        } else {
+            data[data_length] = '\0';
+        }
+    }
+
+    return data;
+}
+
+char* ltrim(char* str) {
+    if (!str) {
+        return '\0';
+    }
+
+    if (!*str) {
+        return str;
+    }
+
+    while (*str != '\0' && isspace(*str)) {
+        str++;
+    }
+
+    return str;
+}
+
+char* rtrim(char* str) {
+    if (!str) {
+        return '\0';
+    }
+
+    if (!*str) {
+        return str;
+    }
+
+    char* end = str + strlen(str) - 1;
+
+    while (end >= str && isspace(*end)) {
+        end--;
+    }
+
+    *(end + 1) = '\0';
+
+    return str;
+}
+
+long parse_long(char* str) {
+    char* endptr;
+    long value = strtol(str, &endptr, 10);
+
+    if (endptr == str || *endptr != '\0') {
+        exit(EXIT_FAILURE);
+    }
+
+    return value;
+}
+
+#include <iostream>
+#include <cstring>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <string>
+#include <map>
+#include <ctime>
+#include <cstdlib>
+#include <unordered_set>
+
+using namespace std;
+
+typedef long long ll;
+
+const int MaxN = 100;
+
+char s[MaxN + 1];
+
+int main() {
+    ll n;
+    scanf ("%s", s);
+    int len = (int)strlen(s);
+    scanf ("%lld", &n);
+    
+    ll tot = n / len;
+    
+    ll as = 0;
+    for (int i = 0; i < len; ++i)
+        if (s[i] == 'a')
+            ++as;
+    
+    ll res = tot * as;
+    
+    for (int i = 0; i < n % len; ++i) 
+        if (s[i] == 'a')
+            ++res;
+    
+    printf ("%lld", res);
+    
+}

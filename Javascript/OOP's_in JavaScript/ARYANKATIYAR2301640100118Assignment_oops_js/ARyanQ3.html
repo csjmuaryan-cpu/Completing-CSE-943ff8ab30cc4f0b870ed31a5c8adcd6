@@ -1,0 +1,105 @@
+<!-- write a program javascript program that attempts the praase a non numeric string a number using parseint(). Handle any exceptions that may occurs and display an error message in the console. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print the error messages</title>
+</head>
+<body>
+    <script>
+try {
+    let str = "hello";
+    let num = parseInt(str);
+    if (isNaN(num)) {
+        throw new Error("Cannot parse a non-numeric string to a number.");
+    }
+    console.log("Parsed number:", num);
+} catch (error) {
+    console.error("Error:", error.message);
+}
+</script>
+    <p>Check the console for error messages.</p>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parseInt Demo</title>
+</head>
+<body>
+    <p>Check the console for output.</p>
+    <button onclick="testParseInt()">Test parseInt</button>
+    <button onclick="testJsonParseError()">Test JSON.parse Error</button>
+
+    <script>
+        function testParseInt() {
+            const nonNumericString = "hello123world";
+            const startsWithNumber = "42istheanswer";
+            const pureNonNumeric = "world";
+            const emptyString = "";
+            const nullValue = null;
+
+            console.log(`--- Testing parseInt with "${nonNumericString}" ---`);
+            let result1 = parseInt(nonNumericString);
+            // parseInt will parse leading digits. If no leading digits, it returns NaN.
+            // It does NOT throw an exception for non-numeric strings.
+            console.log(`parseInt("${nonNumericString}"):`, result1); // Output: NaN (or a number if it started with digits)
+            if (isNaN(result1)) {
+                console.warn(`Failed to parse "${nonNumericString}" into a valid number. Result is NaN.`);
+            }
+
+            console.log(`--- Testing parseInt with "${startsWithNumber}" ---`);
+            let result2 = parseInt(startsWithNumber);
+            console.log(`parseInt("${startsWithNumber}"):`, result2); // Output: 42
+            if (isNaN(result2)) {
+                console.warn(`Failed to parse "${startsWithNumber}" into a valid number. Result is NaN.`);
+            }
+
+            console.log(`--- Testing parseInt with "${pureNonNumeric}" ---`);
+            let result3 = parseInt(pureNonNumeric);
+            console.log(`parseInt("${pureNonNumeric}"):`, result3); // Output: NaN
+            if (isNaN(result3)) {
+                console.warn(`Failed to parse "${pureNonNumeric}" into a valid number. Result is NaN.`);
+            }
+
+            console.log(`--- Testing parseInt with empty string "" ---`);
+            let result4 = parseInt(emptyString);
+            console.log(`parseInt(""):`, result4); // Output: NaN
+            if (isNaN(result4)) {
+                console.warn(`Failed to parse empty string into a valid number. Result is NaN.`);
+            }
+
+            console.log(`--- Testing parseInt with null ---`);
+            let result5 = parseInt(nullValue);
+            console.log(`parseInt(null):`, result5); // Output: NaN
+            if (isNaN(result5)) {
+                console.warn(`Failed to parse null into a valid number. Result is NaN.`);
+            }
+        }
+
+        function testJsonParseError() {
+            const invalidJsonString = "{ name: 'John', age: 30 }"; // Property names must be in double quotes
+
+            console.log(`--- Attempting to parse invalid JSON: "${invalidJsonString}" ---`);
+            try {
+                // JSON.parse() WILL throw an exception for invalid JSON syntax.
+                const parsedObject = JSON.parse(invalidJsonString);
+                console.log("Parsed JSON object:", parsedObject);
+            } catch (error) {
+                // Handle the exception
+                console.error("An error occurred during JSON parsing:");
+                console.error("Error name:", error.name);     // e.g., "SyntaxError"
+                console.error("Error message:", error.message); // Specific error message
+                // console.error("Stack trace:", error.stack); // Full stack trace
+            }
+        }
+
+        // Run one test on load for demonstration
+        testParseInt();
+    </script>
+
+</body>
+</html> -->

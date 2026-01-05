@@ -1,0 +1,26 @@
+# Mansa and Stones - Possible Test Case Generator
+
+# Problem Recap:
+# Given n stones in a row, each can be increased by a or b.
+# Output all possible values for the last stone in sorted order.
+
+def possible_last_stones(n, a, b):
+    results = set()
+    for i in range(n):
+        value = i * b + (n - 1 - i) * a
+        results.add(value)
+    return sorted(results)
+
+# Example test cases
+test_cases = [
+    (3, 1, 2),   # n=3, a=1, b=2
+    (4, 10, 100),# n=4, a=10, b=100
+    (5, 2, 2),   # n=5, a=2, b=2 (a==b)
+    (2, 0, 1),   # n=2, a=0, b=1 (a==0)
+    (10, 1, 10), # n=10, a=1, b=10
+]
+
+for idx, (n, a, b) in enumerate(test_cases):
+    print(f"Test case {idx+1}: n={n}, a={a}, b={b}")
+    print("Possible last stones:", possible_last_stones(n, a, b))
+    print()

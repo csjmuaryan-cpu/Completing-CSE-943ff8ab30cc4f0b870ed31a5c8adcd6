@@ -1,0 +1,1109 @@
+S.no	Attempt Answer	Correct Answer	Status
+1	C	B	
+What will be the output of the program?
+int main() 
+{
+int cls = 1;
+switch(cls<< (2+cls))
+{
+default :
+printf("class ");
+case 4:
+printf("class 4 ");
+case 5:
+printf("class 5 ");
+case 8:
+printf("class 8 ");
+}
+ 
+}
+ 
+A. class 8 class
+B. class 8
+C. class 4 class 5 class 8
+D. Error
+2	B	B	
+What will be the output of the program?
+void main()
+{
+int a=16,n=0; 
+while(n<=~(~a))
+{
+      n++;
+}
+a=n;
+printf("%d",~a);
+}
+ 
+A. 18
+B. -18
+C. 16
+D. -16
+3	B	B	
+What is displayed by this program?
+#include <stdio.h>
+void fun(int *xp);
+int main()
+{ int x=5, y=6;
+fun(&x);
+fun(&y);
+printf("%d %d", x, y);
+return 0;
+}
+void fun(int *xp)
+{
+int y=1;
+y = *xp + 2;
+*xp = y * 3;
+}
+ 
+ a.  21  8
+ b.  21  24
+ c.   5   6
+ d.   5   8
+4	D	B	
+What does the following function print for n = 25?
+void fun(int n)
+{
+  if (n == 0)
+    return;
+ 
+    fun(n/2);
+   printf("%d", n%2);
+}  
+A. 11001
+B. 10011
+C. 11111
+D. 00000
+5	C	C	
+What will be output for the following code?
+ 
+#include <stdio.h>
+main()
+{
+    int num=5;
+    int fun(int num);
+    printf("%d",fun(num));
+}
+int fun(int num)
+{
+    if(num>0)
+        return(num+fun(num-2));
+}
+A. 6
+B. 7
+C. 8
+D. Error
+6	C	B	
+Select the most appropriate output for the following C code:
+main()
+    { int x=-25,d,e;
+d=!x;
+e=~x;
+printf("%d %d",d,e);    
+    }
+ 
+a. 0 26
+b. 0 24 
+c. 1 25
+d. 1 0
+7	A	D	
+Select the most appropriate output for the following C code:
+ main()
+{
+ int a = -5, b = 10;
+ a = b &= a && -5;
+ printf("%d %d",a,b);
+ }
+a. -100 1
+b. 1 0
+c. 1 1 
+d. 0 0
+8	A	B	
+What will be the output of given code
+void main ()
+{ 
+char s1[]="Hello";
+char s2[]="Hello";
+if(s1==s2)
+printf("Both are same");
+else
+printf ("Both are not same");
+}
+ 
+A) Both are same
+B) Both are not same
+C) Compile Time Error
+D) None of these
+9	B	C	
+What will be the output of the following program?
+ 
+#include<stdio.h>
+void Show(int a)
+{
+static int x=1;
+printf("%d ",x);
+x+=a;
+}
+int main()
+{
+int i;
+for(i=0; i<5; i++)
+{
+     Show(i);
+}
+return 0;
+}
+ 
+A) 1 1 1 1 1
+B) 1 2 3 4 5
+C) 1 1 2 4 7
+D) None of these
+10	A	D	
+What is the output of C Program?
+#include <stdio.h>
+ int main() { 
+if("abc") { 
+printf("India"); 
+} 
+if('c') { 
+printf("World"); 
+} 
+printf("War"); 
+return 0; 
+} 
+A) Error
+B) World War
+C) India War
+D) India World War
+11	B	B	
+What will be the output of the following C code?
+ 
+    #include <stdio.h>
+    int main()
+    {
+        printf("%d ", 1);
+        goto L1;
+        printf("%d ", 2);
+        L1:
+        printf("Hi");
+        goto l2;
+        printf("%d ", 3);
+        L2:printf("%d ", 4);
+return 0;
+   }
+a) 1 4
+b) 1 Hi 4
+c) 1 2 Hi 3 4
+d) 1 3 4
+12	C	D	
+What will be the output of the following C code?
+ 
+    #include <stdio.h>
+    int main()
+    {
+        int i = 0, j = 0;
+        while (i < 2)
+        {
+            X : 
+            i=i+2;
+            while (j < 3)
+            {
+                printf("Loop ");
+                if(j != 0)
+                goto X;
+            }
+        }
+return 0;
+    }
+a) Loop Loop
+b) Compilation error
+c) Loop Loop Loop Loop
+d) Infinite Loop
+13	A	C	
+What will output of the code given bellow?
+#include<stdio.h> 
+fib_term()
+{
+int a=0,b=1;
+int c;
+c=a+b;a=b;b=c;
+return c;
+}
+main()
+{
+int count=0,i;
+for(i=0;i<5;i++)
+printf("%d ",fib_term());
+}
+a) 1 2 3 4 5
+b) 1 2 3 5 8
+c) 1 1 1 1 1
+d) compilation error
+14	B	D	
+What will bw output of folowing code?
+#include<stdio.h>
+int main()
+{
+    unsigned int i = 65536; /* Assume 2 byte integer*/
+    while(i != 0)
+        printf("%d",++i);
+    return 0;
+}
+A.Infinite loop
+B.0 1 2 ... 65535
+C.0 1 2 ... 32767 - 32766 -32765 -1 0
+D.No output
+15	B	C	
+What will bw output of folowing code?
+#include<stdio.h> 
+int main() 
+{ 
+   int n; 
+   for (n = 9; n!=0; n--) 
+     printf("n = %d", n--); 
+   return 0; 
+} 
+(A) 9 7 5 3 1
+(B) 9 8 7 6 5 4 3 2 1
+(C) Infinite Loop
+(D) 9 7 5 3
+16	D	C	
+What is the output of code given below?
+#include<stdio.h>
+ main()
+     {
+int i=1;
+for(i=10;i>0;i--)
+{
+  printf("%d",i);
+  if(i%3==0)
+    continue;
+  else 
+                    break;
+}
+     }
+ 
+A)10 8 7 5 4 2 1
+B)1 3 5 7 9 
+C)10
+D)Compilation Error
+17	B	B	
+int sum(int n)
+ {
+      if (n==0)
+           return n;
+     else
+                  return n + sum(n/2);    
+}
+What will be the output of sum(8).
+a)36
+b)15
+c)34
+d)none
+18	D	A	
+What is the output of code given below?
+#include<stdio.h>
+main()
+    {
+int i,j;
+for(i=1;i<3;i++)
+  for(j=1;j<4;j++)
+  {
+    if(i==2)continue;
+    printf("%d%d",i,j);
+  }
+   }
+A)1 1 1 2 1 3
+B)1 1 2 2 3 3
+C)No output
+D)compilation error
+19	A	A	
+What will be the output of following code? 
+     #include<stdio.h>
+      int Sum_diff(int a,int b,int *p,int *q)
+           {
+*p=a+b;
+*q=a-b;
+            }
+    main()
+      {    
+            int a=20,b=10,sum,diff;
+            Sum_diff(a,b,&sum,&diff);
+           printf("Sum = %d and Difference = %d ",sum,diff);
+       }
+A. 30 10
+B. 30 30
+C. 10 10
+D. Compilation Error
+20	A	B	
+What will be the output?
+main()
+{
+int t;
+t=printf("%d",printf("HelloWelcome"));
+printf("%d",t);
+return 0;
+}
+a)HelloWelcome121
+b)HelloWelcome122
+c) HelloWelcome2
+d)Error
+21	B	B	
+What will be output of following c code? 
+#include<stdio.h> 
+int main()
+{ 
+int i=0; 
+for(++i;++i;++i) 
+{ 
+  printf("%d ",i); 
+  if(i==4)
+     break; 
+} 
+return 0; 
+} 
+(A) 4 
+(B) 2 4 
+(C) 2 5 
+(D) Infinite loop 
+22	A	A	
+What is the output of C Program.?
+#include<stdio.h>
+int main()
+{
+   int t,r,c,n,i;
+   r=0;
+   c=10;
+   for(i=1;i<=c;i++)
+  {    
+      r++;
+     c=c-i;   
+  }
+  printf("%d ",r);
+}
+a) 4 
+b) 5
+c) Infinite
+d) Compilation Error 
+23	C	B	
+What is the output of this C code? 
+#include<stdio.h>
+main()
+{
+    int sum = 0,i,j,n=5;
+    for (i = n ; i >= 0 ; --i)
+        { 
+           for (j =1 ; j<=i ; ++j)
+            {
+                  if(j==i)
+   continue;
+                  sum += j;
+             }
+         }
+    printf("%d", sum);
+}
+a) 19 
+b) 20
+c) Infinite loop
+d) Compilation Error  
+24	A	A	
+ How many times this loop will execute?
+ 
+#include<stdio.h>
+int main()
+{
+    char c=125;
+    do
+         printf("%d ",c);
+    while(c++);
+    return 0;
+}
+ 
+A. Finite times
+B. Infinite times
+C. 125 126 127
+D. None of these
+25	B	B	
+Find the output
+ void fun(int *p) 
+{ 
+  int q = 10; 
+  p = &q;
+  *p=25; 
+}     
+   
+int main() 
+{ 
+  int r = 20; 
+  int *p = &r; 
+  fun(p); 
+  printf("%d", *p); 
+  return 0; 
+}
+A.10
+B.20
+C. 25
+D.Compiler error
+26	C	B	
+Change the below code to get output 'jai' without changing variable initialization
+Code:
+#include<stdio.h>
+int main() {
+    int i = 1; //don't change it
+    int j = 2; //don't change it
+    int k = 3; //don't change it
+    while(i != j)
+    {
+        if(i++ == j)    //line-1
+         printf("jai");
+        else if(i == --k)   //line-2
+         printf("ho");
+        else
+         printf("xxxx");
+    }
+}
+ 
+A) line-1: No change
+     line-2: ++i == --k
+ 
+B) line-1: ++i == j
+     line-2: No change
+ 
+C) No need to chage at any where
+D) None of these
+27	D	B	
+Following is the code to print all prime numbers from an array up to a given value n by 
+ 
+using the existing function. These are some mistakes in this code at mentioned lines.
+Find the lines where corrections are required.
+ 
+int isprime(int num)
+{
+int i;
+ int isprime = 0;     //line-1
+ for(i = 2; i <= num / 2; i++)
+ {  
+     if(num % i == 0)  
+     {     
+            isprime = 1;   //line-2    
+               break; 
+     }
+ } 
+ return isprime;
+}
+ 
+}
+int main()
+{
+int n, m, arr[100], size=0, i;
+scanf("%d", &n);
+for(m = 2; m <= n; m++)
+{
+   if(isprime(m))   //line-3
+   {
+      arr[size]= m;  //line-4
+   }
+}
+for(i = 0; i < size; i++)
+{
+printf("%d ", arr[i]);
+}
+return 0;
+}
+ 
+ 
+A) line-1 and line-2
+B) line-1, line-2, line-4
+C) line-2, line-3
+D) None of these
+28	D	C	
+The function sameOddElementCount() returns an integer representing the number of 
+ 
+elements of the input list which are odd numbers and equal to the elements to its left. 
+For example, if the input list is [1,3,3,4,5,5,9,9,10,11] 
+then the function should return the output =3
+because there are 3 similar groups i.e. 3, 5 and 9, in which element is odd and left side element 
+ 
+is same.
+The function compiles successfully but fails to return the desired result for some test cases 
+ 
+due to incorrect implementation of the function. Your task is to fix the code so that it passes all 
+ 
+the test cases. Find the lines where corrections are required.
+Code:
+int sameOddElementCount (int size, int *inputList) 
+{
+        
+    int i, count = 0;
+    for (i = 1; i < size - 1; i++)    //line-1
+    {
+        if ((inputList[i] % 2 == 0) && (inputList[i] == inputList[i--]))  // line-2
+            count++;   //line-3
+    }
+    return count;
+}
+ 
+A) Only in line-1
+B) In line-1, line-3
+C) In line-1 and line-2
+D) None of these
+29	A	C	
+Function nthFib() accepts single argument-num , an integer representing number. 
+for example  num=9 function will return 9th fibonacci term=34.
+Function compiles successfully but fails to return the desired result for some/all cases due to 
+ 
+incorrect implementation. Your task is to debug the code so that it passes all test cases.
+Example
+Input: num=8
+Output: 21
+Explanation:
+The sequence generated by the system will be 1, 1, 2, 3, 5, 8, 13, 21. 
+The 8th number generated from this series will be 21
+Code:
+int nthFib ()   //line-1
+{
+    int num, i;
+    int a = 0, b = 1, c = 1;  //line-2
+     
+    for (i = 0; i <= num; i++)   //line-3
+    {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return a + b;    //line-4
+}
+ 
+ 
+A) line-1 and line-4
+B) line-1 and line-4
+C) line-1, line-3 and line-4
+D) In all lines 
+30	A	D	
+Check for syntax error/ logical error and correct the error to get the desired output.
+The function maxReplace() print space separated integers representing the input list after 
+ 
+replacing all the elements of the input list with the sum of all the element of the input list.
+The function maxReplace accepts two arguments: size - an integer representing the size of the 
+ 
+input list and inputList-a list of integers representing the input list respectively.
+ 
+The function maxReplace compiles unsuccessfully due to compilation errors. Your task is to fix 
+ 
+the code so that it passes all the test cases.
+ 
+void maxReplace(int size, int *inputList)
+{
+    int i,sum=0;
+    for(i=0;i<size;i++)  //line-1
+    {
+         sum += inputList[i];  //line-2
+    }
+        for(i=0;i<size;i++)
+        {
+            sum = inputList[i];   //line-3
+        }
+    for(i=0;i<size;i++)
+    {
+        printf("%d",inputList[i]);   //line-4
+    }
+}
+ 
+A) line-1 and line-2
+B) line-1 and line-3
+C) line-2, line-3 and line-4
+D) line-3 and line-4
+
+1	B	B	
+Where are the local variables stored?
+A. Disk
+B. Stack
+C. Heap
+D. Code
+2	B	C	
+What will happen if in a C program you assign a value to an array element whose subscript 
+exceeds the size of array?
+ 
+A. The element will be set to 0.
+B. The compiler would report an error.
+C. The program may crash if some important data gets overwritten.
+D. The array size would appropriately grow.
+3	C	A	
+What would be the output of the following code?
+int main()
+{
+int a = 8,b = 51, c = 2;
+c = (a ^ c)^ (a);
+b = b % 4;
+printf("%d", a + b + c);
+return 0;
+}
+ 
+A. 13
+B. 17
+C. 26
+D. 16
+4	A	C	
+enum {false, true};
+int main()
+{
+   int i = 1;
+   do
+   {
+      printf("%d ", i);
+      i++;
+      if (i < 7)
+        continue;
+   } while (false);
+ 
+    return 0;
+}
+A) 1 2 3 4 5 6 
+B) 1 2 3 4 5 6 7
+C) 1
+D) Compilation Error
+5	B	B	
+Which of the following statements is FALSE?
+a) The time complexity of binary search is O(log n).
+b) A linear search requires a sorted list.
+c) A binary search can operate only on a sorted list.
+d) The time complexity of linear search is O(n).
+6	D	B	
+int main()
+{
+    static int i=5;
+    if(--i){
+        main();
+        printf("%d ",i);
+    }   
+}
+A) 4 3 2 1
+B) 0 0 0 0 
+C) Infinite Recursion till stack overflow
+D) Compilation Error
+7	C	A	
+How many times the below loop will be executed?
+#include<stdio.h>
+int main()
+{
+int x, y;
+for(x=5;x>=1;x--)
+{
+    for(y=1;y<=x;y++)
+          printf("%d ",y);
+} 
+}
+A. 15
+B. 11
+C. 10
+D. 13
+8	A	C	
+#include <stdio.h>
+int main()
+{
+   int i=0;
+   for(i=0; i<20; i++)
+   {
+     switch(i)
+     {
+       case 0:
+         i+=5;
+       case 1:
+         i+=2;
+       case 5:
+         i+=5;
+       default:               
+         i+=4;
+         break;
+     }
+     printf("%d  ", i);
+   }
+ 
+     return 0;
+}   
+ 
+A) 5 10 14 21
+B) 5 21
+C) 16 21
+D) Compilation Error
+ 
+9	B	D	
+What will be the output of the following C code?
+ 
+    #include <stdio.h>
+    int main()
+    {
+        register int i = 10;
+        int *p = &i;
+        *p = 11;
+        printf("%d %d ", i, *p);
+    }
+a) Depends on whether i is actually stored in machine register
+b) 10 10
+c) 11 11
+d) Compile time error
+10	A	B	
+What will be the output of the following C code?
+ 
+    #include <stdio.h>
+    int main()
+    {
+        register const int i = 10;
+        i = 11;
+        printf("%d ", i);
+    }
+a) 10
+b) Compile time error
+c) Undefined behaviour
+d) 11
+11	A	B	
+Register storage class can be specified to global variables.
+a) True
+b) False
+c) Depends on the compiler
+d) Depends on the standard
+12	A	D	
+What is the output of this C code?
+ 
+    #include <stdio.h>
+    main()
+    {
+        char *p = "Fundamental C-Test";
+        p[0] = 'a';
+        p[1] = 'b';
+        printf("%s", p);
+    }
+a) abndamental C-Test
+b) Fundamental C-Test
+c) Compile time error
+d) Run time error
+13	C	B	
+Find the output of the above program:
+#include <stdio.h> 
+#if X == 3 
+#define Y 3 
+#else 
+#define Y 5 
+#endif 
+ 
+int main() 
+{ 
+printf("%d", Y); 
+return 0; 
+} 
+ 
+(A) 3
+(B) 5
+(C) 3 or 5 depending on value of X
+(D) Compile time error
+14	B	C	
+Find the output
+#include <stdio.h> 
+#define X 3 
+#if !X 
+printf("Programming"); 
+#else 
+printf("Quiz"); 
+ 
+#endif 
+int main() 
+{ 
+      return 0; 
+} 
+(A) Programming
+(B) Quiz
+(C) Compiler Error
+(D) Runtime Error
+15	A	A	
+#include <stdio.h> 
+#define ISEQUAL(X, Y) X == Y 
+int main() 
+{ 
+#if ISEQUAL(X, 0) 
+printf("Exam"); 
+#else 
+printf("Quiz"); 
+#endif 
+return 0; 
+} 
+ 
+Output of the above program?
+(A) Exam
+(B) Quiz
+(C) Any of Geeks or Quiz
+(D) Compile time error
+16	A	D	
+Consider the following C program segment:
+int main()
+{
+char p[20]; 
+char *s = "string"; 
+int length = strlen(s); 
+int i; 
+for (i = 0; i < length; i++) 
+ {
+     p[i] = s[length - i]; 
+ }
+printf("%s",p); 
+}
+ 
+The output of the program is:
+a) gnirts
+b) gnirt
+c) string
+d) no output is printed
+17	B	C	
+Consider the following C function:
+int f(int n) 
+{ 
+static int i = 1; 
+if (n >= 5) 
+        return n; 
+n = n+i; 
+i++; 
+return f(n); 
+} 
+ 
+The value returned by f(1) is :
+a) 5
+b) 6
+c) 7
+d) 8
+18	D	D	
+What will be output if you will compile and execute the following c code?
+#include <stdio.h> 
+int main() 
+{ 
+int a = 5; 
+float b; 
+printf("%d ", sizeof(++a + b)); 
+printf("%d ", a); 
+return 0; 
+} 
+(a)2 6
+(b)4 6
+(c)2 5
+(d)4 5
+19	B	C	
+#include‹stdio.h›
+int main()
+{
+    struct site
+    {
+        char name[] = "Five Point Some One";
+        int no_of_pages = 200;
+    };
+    struct site *ptr;
+    printf("%d ",ptr->no_of_pages);
+    printf("%s",ptr->name); 
+    getchar();
+    return 0;
+}
+ 
+A) Five Point Some One
+B) Five Point Some One 200
+C) Compilation Error
+D) None of these
+20	A	C	
+Find the output in 16-bit compiler.
+int main()
+{
+    unsigned int i=10;
+    while(i-- >= 0)
+        printf("%u ",i);
+    return 0;
+}
+ 
+A) 9 8 7 6 5 4 3 2 1
+B) 10 9 8 7 6 5 4 3 2 1
+C) 9 8 7 6 5 4 3 2 1 0 65535 65534 ……infinite
+D) Unpredictable values
+21	C	B	
+#define prod(a,b) a*b
+int main()
+{
+    int x=3,y=4,z;
+    z=prod(x+2,y-1)
+    printf("%d",z);
+    return 0;
+}
+ 
+A) 21
+B) 10
+C) 15
+D) 19
+22	C	A	
+Assunming, integer is 2 byte.
+What will be the output of the program?
+ 
+#include<stdio.h>
+int main()
+{
+    printf("%x ", -1>>1);
+    return 0;
+}
+A. ffff
+B. 0fff
+C. 0000
+D. fff0
+23	D	C	
+What will be the output of the program ?
+ 
+#include<stdio.h>
+ 
+int main()
+{
+    int i=32, j=20, k, l, m;
+    k=i | j;
+    l=i & j;
+    m=k ^ l;
+    printf("%d, %d, %d, %d, %d", i, j, k, l, m);
+    return 0;
+}
+A. 0, 0, 0, 0, 0
+B. 0, 32, 32, 32, 32
+C. 32, 32, 32, 32, 0
+D. 32, 32, 32, 32, 32
+24	A	C	
+What will be the output of the program?
+ 
+#include<stdio.h>
+ 
+int main()
+{
+    const char *s = "";
+    char str[] = "Hello";
+    s = str;
+    while(*s)
+        printf("%c", *s++);
+ 
+    return 0;
+}
+A. Error
+B. H
+C. Hello
+D. Hel
+25	A	A	
+What will be the output of the program (in Turbo C)?
+ 
+#include<stdio.h>
+ 
+int fun(int *f)
+{
+    *f = 10;
+    return 0;
+}
+int main()
+{
+    const int arr[5] = {1, 2, 3, 4, 5};
+    printf("Before modification arr[3] = %d", arr[3]);
+    fun(&arr[3]);
+    printf(" After modification arr[3] = %d", arr[3]);
+    return 0;
+}
+A. Before modification arr[3] = 4
+     After modification arr[3] = 10
+ 
+B. Error: cannot convert parameter 1 from const int * to int *
+ 
+C. Error: Invalid parameter
+ 
+D. Before modification arr[3] = 4
+     After modification arr[3] = 4
+26	D	A	
+What will be the output of the program?
+ 
+#include<stdio.h>
+#include<stdlib.h>
+ 
+int main()
+{
+    int *p;
+    p = (int *)malloc(20); /* Assume p has address of 1314 */
+    free(p);
+    printf("%u", p);
+    return 0;
+}
+A. 1314
+B. Garbage value
+C. 1316
+D. Random address
+27	A	B	
+What will be the output of the program?
+ 
+#include<stdio.h>
+#include<string.h>
+ 
+int main()
+{
+    char *s;
+    char *fun();
+    s = fun();
+    printf("%s", s);
+    return 0;
+}
+char *fun()
+{
+    char buffer[30];
+    strcpy(buffer, "RAM");
+    return (buffer);
+}
+A. 0xffff
+B. Garbage value
+C. 0xffee
+D. Error
+28	B	C	
+Point out the error in the program
+ 
+f(int a, int b)
+{
+    int a;
+    a = 20;
+    return a;
+}
+A. Missing parenthesis in return statement
+B. The function should be defined as int f(int a, int b)
+C. Redeclaration of a
+D. None of above
+29	A	C	
+Point out the error in the program
+ 
+#include<stdio.h>
+int f(int a)
+{
+  a > 20? return(10): return(20);
+}
+int main()
+{
+    int f(int);
+    int b;
+    b = f(20);
+    printf("%d", b);
+    return 0;
+}
+A. Error: Prototype declaration
+B. No error
+C. Error: return statement cannot be used with conditional operators
+D. None of above
+30	B	A	
+Point out the error in the program
+ 
+#include<stdio.h>
+ 
+int main()
+{
+    int a=10;
+    void f();
+    a = f();
+    printf("%d ", a);
+    return 0;
+}
+void f()
+{
+    printf("Hi");
+}
+A. Error: Not allowed assignment
+B. Error: Doesn't print anything
+C. No error
+D. None of above
